@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Urban Kitchen | Brunch House</title>
+    <meta
+      name="description"
+      content="Urban Kitchen Brunch House in Pleasant Grove, Utah. Elevated brunch, fresh breakfast and lunch favorites, and a stylish modern atmosphere."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#hero" aria-label="Urban Kitchen home">
+        <span class="brand-mark">urban.</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Visit</a>
+        <a class="nav-reserve" href="#" aria-label="Reserve a table">Reserve a Table</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="hero" aria-label="Urban Kitchen Brunch House">
+        <div class="hero-media" role="img" aria-label="Urban Kitchen French toast with berries and whipped cream"></div>
+        <div class="hero-shade"></div>
+        <div class="hero-content reveal">
+          <p class="eyebrow">Pleasant Grove · Utah</p>
+          <h1><span>urban kitchen</span><em>brunch house</em></h1>
+          <p class="hero-copy">
+            Elevated brunch in Pleasant Grove — fresh, made-to-order plates served beneath crystal chandeliers
+            and soft brass light.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#menu">View Menu</a>
+            <a
+              class="button button-secondary"
+              href="https://www.google.com/maps/search/?api=1&query=425%20S.%20North%20County%20Suite%20D%20Pleasant%20Grove%20UT"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Get Directions
+            </a>
+          </div>
+        </div>
+        <div class="hero-meta" aria-hidden="true">
+          <span>Weekdays 8am — 2pm · Weekends 7am — 3pm</span>
+          <span>Scroll ↓</span>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div class="about-layout">
+          <figure class="about-image reveal">
+            <img src="assets/chandelier-booths-wide.png" alt="Urban Kitchen green velvet booths and chandeliers" />
+          </figure>
+          <div class="about-copy reveal">
+            <p class="section-kicker">Our Story</p>
+            <h2>a modern brunch destination</h2>
+            <p>
+              Urban Kitchen is where craft meets comfort. We focus on fresh, made-to-order breakfast and lunch
+              favorites — from buttery French toast to slow-pulled benedicts — served in a stylish, atmospheric
+              space designed to slow you down.
+            </p>
+            <p>
+              Velvet booths, crystal chandeliers, and the quiet hum of espresso. Stay a while.
+            </p>
+            <div class="about-stats" aria-label="Urban Kitchen highlights">
+              <div><strong>7a</strong><span>Daily Open</span></div>
+              <div><strong>3p</strong><span>Weekend Close</span></div>
+              <div><strong>PG</strong><span>Pleasant Grove</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section menu-section" id="menu">
+        <div class="section-heading reveal">
+          <p class="section-kicker">The Menu</p>
+          <h2>made fresh, plated beautifully</h2>
+          <p>Every plate is prepared to order. Browse by category below.</p>
+        </div>
+
+        <div class="menu-shell reveal">
+          <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+            <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" data-menu-tab="breakfast">
+              Breakfast
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="skillets">
+              Skillets
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="sandwiches">
+              Sandwiches
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="soups">
+              Soups & Salads
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="sides">
+              Sides
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="pastry">
+              Pastry
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="kids">
+              Kids
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="drinks">
+              Beverages
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="coke">
+              Coke Products
+            </button>
+          </div>
+
+          <div class="menu-panels">
+            <article class="menu-panel is-active" data-menu-panel="breakfast" tabindex="0">
+              <div class="panel-head">
+                <h3>Breakfast</h3>
+                <p>Includes a side of potatoes.</p>
+              </div>
+              <div class="menu-grid">
+                <div class="menu-item"><h4>The Urban</h4><span>$12</span></div>
+                <div class="menu-item"><h4>Urban Guacamole Toast</h4><span>$15</span></div>
+                <div class="menu-item"><h4>Omelette</h4><p>Protein +$2, veggies +$1, cheese +$2, eggs +$1.50</p><span>$14.50</span></div>
+                <div class="menu-item"><h4>Urban Benedict</h4><span>$14</span></div>
+                <div class="menu-item"><h4>Breakfast Burrito</h4><span>$11.50</span></div>
+                <div class="menu-item"><h4>French Toast</h4><span>$12.50</span></div>
+                <div class="menu-item"><h4>Fruit Bowl</h4><span>$11</span></div>
+                <div class="menu-item"><h4>Breakfast Sandwich</h4><span>$11.50</span></div>
+                <div class="menu-item"><h4>Steak and Eggs</h4><span>$16</span></div>
+                <div class="menu-item"><h4>Strawberry Crepes</h4><span>$14</span></div>
+                <div class="menu-item"><h4>Urban Crepes</h4><span>$16</span></div>
+                <div class="menu-item"><h4>Waffles</h4><span>$13</span></div>
+              </div>
+            </article>
+
+            <article class="menu-panel" data-menu-panel="skillets" tabindex="0">
+              <div class="panel-head"><h3>Skillets</h3><p>Hot, savory, and brunch-ready.</p></div>
+              <div class="menu-grid compact">
+                <div class="menu-item"><h4>Ranchero Skillet</h4><span>$15</span></div>
+                <div class="menu-item"><h4>Mexican Skillet</h4><span>$17</span></div>
+                <div class="menu-item"><h4>The Urban Skillet</h4><span>$15</span></div>
+              </div>
+            </article>
+
+            <article class="menu-panel" data-menu-panel="sandwiches" tabindex="0">
+              <div class="panel-head"><h3>Brunch Sandwiches</h3><p>Served with fries.</p></div>
+              <div class="menu-grid">
+                <div class="menu-item"><h4>Sirloin Tips & Eggs</h4><span>$18.50</span></div>
+                <div class="menu-item"><h4>Pesto Chicken Sandwich</h4><span>$14.50</span></div>
+                <div class="menu-item"><h4>Italian Sandwich</h4><span>$14.50</span></div>
+                <div class="menu-item"><h4>Pulled Pork Sandwich</h4><span>$14.50</span></div>
+                <div class="menu-item"><h4>BLT</h4><span>$12</span></div>
+                <div class="menu-item"><h4>Urban Bacon Cheese Burger</h4><span>$15</span></div>
+              </div>
+            </article>
+
+            <article class="menu-panel" data-menu-panel="soups" tabindex="0">
+              <div class="panel-head"><h3>Soups & Salads</h3><p>Clean, bright lunch pairings.</p></div>
+              <div class="menu-grid compact">
+                <div class="menu-item"><h4>Tomato Soup</h4><span>$12</span></div>
+                <div class="menu-item"><h4>Corn Chowder</h4><span>$12</span></div>
+                <div class="menu-item"><h4>Urban Burrata Salad</h4><span>$18</span></div>
+                <div class="menu-item"><h4>Caesar Salad</h4><span>$12</span></div>
+              </div>
+            </article>
+
+            <article class="menu-panel" data-menu-panel="sides" tabindex="0">
+              <div class="panel-head"><h3>Sides</h3><p>Add something savory, crispy, or fresh.</p></div>
+              <div class="menu-grid sides-grid">
+                <div class="menu-item"><h4>Turkey</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Ham</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Bacon</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Sausage Links</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Chorizo</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Chicken</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Burger Patty</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Smoked Salmon</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Ham Steak</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Sirloin Tips</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Side Salad</h4><span>$4.50</span></div>
+                <div class="menu-item"><h4>Seasonal Fruit</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Fries</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Onion Rings</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Tater Tots</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Black Beans</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Avocado</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Fried Jalapenos</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Toast</h4><span>$2.50</span></div>
+              </div>
+            </article>
+
+            <article class="menu-panel" data-menu-panel="pastry" tabindex="0">
+              <div class="panel-head"><h3>Pastry</h3><p>Cakes and muffins for a sweet finish.</p></div>
+              <div class="menu-grid compact">
+                <div class="menu-item"><h4>Coffee Chocolate Almond Cake</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Chocolate Banana Swirl Cake</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Iced Lemon Cake</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Apple Cinnamon Muffin</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Lemon Cranberry Muffin</h4><span>$4</span></div>
+              </div>
+            </article>
+
+            <article class="menu-panel" data-menu-panel="kids" tabindex="0">
+              <div class="panel-head"><h3>Kids Menu</h3><p>For guests 12 and under.</p></div>
+              <div class="menu-grid compact">
+                <div class="menu-item"><h4>Pancakes and Eggs</h4><span>$10</span></div>
+                <div class="menu-item"><h4>Kids Burrito</h4><span>$10</span></div>
+                <div class="menu-item"><h4>The Urban Jr.</h4><span>$10</span></div>
+                <div class="menu-item"><h4>Kids Quesadilla</h4><span>$10</span></div>
+              </div>
+            </article>
+
+            <article class="menu-panel" data-menu-panel="drinks" tabindex="0">
+              <div class="panel-head"><h3>Beverages & Coffee</h3><p>Coffee, juice, and tea.</p></div>
+              <div class="drink-columns">
+                <div>
+                  <h4>Beverages</h4>
+                  <div class="menu-item"><h4>Orange Juice or Apple Juice</h4><span>$5</span></div>
+                  <div class="menu-item"><h4>Hot/Iced Tea</h4><p>16oz</p><span>$4.50</span></div>
+                </div>
+                <div>
+                  <h4>Coffee</h4>
+                  <p class="micro-note">+$1.50 extra shot. Add syrup +$0.50: vanilla, caramel, cinnamon, hazelnut, chocolate.</p>
+                  <div class="menu-grid drink-grid">
+                    <div class="menu-item"><h4>Espresso</h4><span>$4</span></div>
+                    <div class="menu-item"><h4>Americano</h4><span>$4</span></div>
+                    <div class="menu-item"><h4>Cappuccino</h4><span>$5</span></div>
+                    <div class="menu-item"><h4>Latte</h4><span>$5</span></div>
+                    <div class="menu-item"><h4>Mocha</h4><span>$5</span></div>
+                    <div class="menu-item"><h4>Drip Coffee</h4><span>$3.50</span></div>
+                    <div class="menu-item"><h4>Hot Chocolate</h4><span>$5</span></div>
+                    <div class="menu-item"><h4>The Urban Red Eye</h4><span>$4.50</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-panel" data-menu-panel="coke" tabindex="0">
+              <div class="panel-head"><h3>Coke Products</h3><p>$3.50 each.</p></div>
+              <div class="menu-grid sides-grid">
+                <div class="menu-item"><h4>Coke</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Diet Coke</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Coke Zero</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Sprite</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Lemonade</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Unsweetened Iced Tea</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Dr. Pepper</h4><span>$3.50</span></div>
+                <div class="menu-item"><h4>Diet Dr. Pepper</h4><span>$3.50</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section gallery-section" id="gallery">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Gallery</p>
+          <h2>a feast for the eyes</h2>
+          <p>A look inside the dining room and a taste of what's coming out of the kitchen.</p>
+        </div>
+        <div class="gallery-grid reveal">
+          <figure class="gallery-item tall">
+            <img src="assets/french-toast-close.png" alt="French toast with berries, whipped cream, and powdered sugar" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/chandelier-booths-wide.png" alt="Green tufted booths beneath crystal chandeliers" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/benedict.png" alt="Urban Benedict with potatoes on a blue plate" />
+          </figure>
+          <figure class="gallery-item wide">
+            <img src="assets/chandelier-entry.png" alt="Entry view with chandelier, pendant lights, and exposed ductwork" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/burrito-close.png" alt="Breakfast burrito with salad, salsa, and grapefruit" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/ranchero-close.png" alt="Ranchero skillet with eggs, peppers, and grapefruit" />
+          </figure>
+          <figure class="gallery-item wide">
+            <img src="assets/french-toast-overhead.png" alt="French toast with strawberries, berries, whipped cream, and powdered sugar" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/urban-toast.png" alt="Urban guacamole toast with potatoes" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/ceiling-lights.png" alt="Pendant lights and exposed metal ductwork" />
+          </figure>
+          <figure class="gallery-item wide logo-sign">
+            <img src="assets/exterior.png" alt="Urban Kitchen storefront at 425 South North County Suite D" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="visit-section" id="visit">
+        <div class="visit-content reveal">
+          <p class="section-kicker">Visit Us</p>
+          <h2>come hungry, leave inspired</h2>
+          <div class="visit-details">
+            <div>
+              <span>Address</span>
+              <p>425 S. North County, Suite D<br />Pleasant Grove, UT</p>
+            </div>
+            <div>
+              <span>Hours</span>
+              <p>Mon-Fri 8:00 AM-2:00 PM<br />Sat-Sun 7:00 AM-3:00 PM</p>
+            </div>
+            <div>
+              <span>Phone</span>
+              <p><a href="tel:+18014062010">801-406-2010</a></p>
+            </div>
+          </div>
+          <div class="visit-actions">
+            <a
+              class="button button-dark"
+              href="https://www.google.com/maps/search/?api=1&query=425%20S.%20North%20County%20Suite%20D%20Pleasant%20Grove%20UT"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Get Directions
+            </a>
+            <a class="button button-outline-dark" href="tel:+18014062010">Call to Reserve</a>
+          </div>
+        </div>
+        <div class="map-wrap reveal">
+          <iframe
+            title="Map to Urban Kitchen in Pleasant Grove"
+            src="https://www.google.com/maps?q=425%20S.%20North%20County%20Suite%20D%20Pleasant%20Grove%20UT&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <a class="brand footer-brand" href="#hero" aria-label="Urban Kitchen home">
+          <span class="brand-mark">urban.</span>
+        </a>
+        <p>Brunch House — Pleasant Grove, Utah.</p>
+      </div>
+      <div class="footer-find">
+        <span>Find Us</span>
+        <p>425 S. North County, Suite D<br />Pleasant Grove, UT</p>
+      </div>
+      <div class="social-links" aria-label="Social links">
+        <a href="https://www.instagram.com/urban.kitchen.ut/" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>
+      </div>
+      <p class="copyright">&copy; <span data-year></span> Urban Kitchen Brunch House. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
