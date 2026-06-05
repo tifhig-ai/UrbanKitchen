@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+seo-*-preview.png
+
+# Local flyer/design working files that should not ship with the website.
+urban-kitchen-*.png
+urban-kitchen-*.pdf
+urban-kitchen-flyer-*.html
+urban-kitchen-four-up-flyer.html
+*.py
+make-urban-kitchen-qr.js
+make_walk_with_me_vectors.py
+print-ready/

@@ -4,9 +4,10 @@ const navToggle = document.querySelector(".nav-toggle");
 const tabs = document.querySelectorAll("[data-menu-tab]");
 const panels = document.querySelectorAll("[data-menu-panel]");
 const year = document.querySelector("[data-year]");
+const isSubpage = Boolean(document.querySelector(".subpage"));
 
 const setHeaderState = () => {
-  header.classList.toggle("is-scrolled", window.scrollY > 24);
+  header.classList.toggle("is-scrolled", isSubpage || window.scrollY > 24);
 };
 
 setHeaderState();
