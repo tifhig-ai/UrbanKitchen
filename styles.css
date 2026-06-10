@@ -909,6 +909,116 @@ h1 em {
   padding-top: 0;
 }
 
+.special-page {
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+.special-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(70px, 9vw, 118px) clamp(24px, 4vw, 58px) clamp(56px, 8vw, 96px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(36px, 6vw, 76px);
+  align-items: center;
+}
+
+.special-copy h1 {
+  max-width: 680px;
+  color: var(--ink);
+  font-size: clamp(3.1rem, 6.4vw, 6.2rem);
+}
+
+.special-copy,
+.special-flyer,
+.special-details article,
+.special-visit > * {
+  min-width: 0;
+}
+
+.special-copy p {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 1.7vw, 1.28rem);
+}
+
+.special-flyer {
+  margin: 0;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.special-flyer img {
+  aspect-ratio: 1.62;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.special-details {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 58px) clamp(70px, 9vw, 112px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.special-details article {
+  min-height: 230px;
+  padding: clamp(26px, 4vw, 40px);
+  border: 1px solid var(--line);
+  background: #ffffff;
+}
+
+.special-details span {
+  display: block;
+  margin-bottom: 22px;
+  color: var(--gold-deep);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.special-details h2,
+.special-visit h2 {
+  margin-bottom: 16px;
+  color: var(--ink);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-weight: 500;
+  line-height: 1.05;
+  text-transform: lowercase;
+}
+
+.special-details p,
+.special-visit p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.special-visit {
+  max-width: var(--max);
+  margin: 0 auto clamp(84px, 10vw, 132px);
+  padding: clamp(34px, 5vw, 52px) clamp(24px, 4vw, 58px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.special-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
 .menu-seo-section {
   padding: clamp(78px, 9vw, 124px) clamp(24px, 4vw, 58px);
   background: var(--paper);
@@ -1223,6 +1333,20 @@ h1 em {
     grid-template-columns: 1fr;
   }
 
+  .special-hero,
+  .special-details,
+  .special-visit {
+    grid-template-columns: 1fr;
+  }
+
+  .special-actions {
+    justify-content: flex-start;
+  }
+
+  .special-copy h1 {
+    font-size: clamp(3.15rem, 14vw, 4.3rem);
+  }
+
   .about-image img {
     aspect-ratio: 1.15;
   }
@@ -1270,6 +1394,7 @@ h1 em {
 
   .hero-actions,
   .visit-actions,
+  .special-actions,
   .button {
     width: 100%;
   }
