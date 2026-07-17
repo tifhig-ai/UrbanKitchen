@@ -51,6 +51,7 @@ tabs.forEach((tab) => {
 });
 
 const revealItems = document.querySelectorAll(".reveal");
+const feedbackForm = document.querySelector("[data-feedback-form]");
 
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
@@ -67,4 +68,24 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => observer.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
+if (feedbackForm) {
+  const phoneInput = feedbackForm.querySelector("[data-phone-input]");
+  const smsConsent = feedbackForm.querySelector("[data-sms-consent]");
+  const formError = feedbackForm.querySelector("[data-form-error]");
+
+  feedbackForm.addEventListener("submit", (event) => {
+    const hasPhone = phoneInput.value.trim().length > 0;
+    const hasConsent = smsConsent.checked;
+
+    if (hasPhone && !hasConsent) {
+      event.preventDefault();
+      formError.hidden = false;
+      smsConsent.focus();
+      return;
+    }
+
+    formError.hidden = true;
+  });
 }

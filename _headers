@@ -7,6 +7,30 @@
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/about
+  Cache-Control: public, max-age=0, must-revalidate
+
+/menu
+  Cache-Control: public, max-age=0, must-revalidate
+
+/location
+  Cache-Control: public, max-age=0, must-revalidate
+
+/reservations
+  Cache-Control: public, max-age=0, must-revalidate
+
+/connect
+  Cache-Control: public, max-age=0, must-revalidate
+
+/connect-thanks
+  Cache-Control: public, max-age=0, must-revalidate
+
+/june-special
+  Cache-Control: public, max-age=0, must-revalidate
+
 /styles.css
   Cache-Control: public, max-age=0, must-revalidate
 
