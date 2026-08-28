@@ -6,7 +6,7 @@
     <title>Claim Your Urban Kitchen Offer | Feedback, Reviews & Social</title>
     <meta
       name="description"
-      content="Claim an Urban Kitchen VIP offer, share private feedback, leave an honest Google review, or follow Urban Kitchen on Instagram and TikTok."
+      content="Claim an Urban Kitchen VIP offer, share private feedback, leave an honest Google review, or follow Urban Kitchen on Instagram, TikTok, and Facebook."
     />
     <link rel="canonical" href="https://urbankitchen-pg.com/connect" />
     <meta name="robots" content="index, follow" />
@@ -16,7 +16,7 @@
       content="Claim a pastry or specialty drink offer, share private feedback, and connect with Urban Kitchen after your visit."
     />
     <meta property="og:url" content="https://urbankitchen-pg.com/connect" />
-    <meta property="og:image" content="https://urbankitchen-pg.com/assets/french-toast-overhead.webp" />
+    <meta property="og:image" content="https://urbankitchen-pg.com/assets/current-french-toast-table.webp" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,7 +45,7 @@
             "@id": "https://urbankitchen-pg.com/#restaurant",
             "name": "Urban Kitchen Brunch House",
             "url": "https://urbankitchen-pg.com/",
-            "image": "https://urbankitchen-pg.com/assets/chandelier-booths-wide.webp",
+            "image": "https://urbankitchen-pg.com/assets/hero-chandeliers.webp",
             "telephone": "+1-801-406-2010",
             "servesCuisine": ["Brunch", "Breakfast", "Lunch", "American"],
             "priceRange": "$$",
@@ -56,7 +56,11 @@
               "addressRegion": "UT",
               "addressCountry": "US"
             },
-            "sameAs": ["https://www.instagram.com/urban.kitchen.ut/"]
+            "sameAs": [
+              "https://www.instagram.com/urban.kitchen.ut/",
+              "https://www.tiktok.com/@urban.kitchen.ut",
+              "https://www.facebook.com/61591842336361/"
+            ]
           }
         ]
       }
@@ -72,12 +76,12 @@
         <span class="sr-only">Menu</span>
       </button>
       <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-        <a href="/about">About</a>
-        <a href="/menu">Menu</a>
-        <a href="/#gallery">Gallery</a>
-        <a href="/location">Visit</a>
-        <a href="/connect" aria-current="page">Connect</a>
-        <a class="nav-reserve" href="/reservations">Reserve a Table</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="location.html">Visit</a>
+        <a href="connect.html" aria-current="page">Connect</a>
+        <a class="nav-reserve" href="reservations.html">Reserve a Table</a>
       </nav>
     </header>
 
@@ -99,10 +103,10 @@
         </div>
         <figure class="connect-photo reveal">
           <img
-            src="assets/french-toast-overhead.webp"
-            width="1600"
-            height="1067"
-            alt="Urban Kitchen French toast with berries and cream"
+            src="assets/current-french-toast-table.webp"
+            width="1275"
+            height="1700"
+            alt="Urban Kitchen French toast with berry compote and whipped cream"
             loading="eager"
             decoding="async"
           />
@@ -120,7 +124,7 @@
             <strong>Send me the pastry or drink offer</strong>
             <em>Email required</em>
           </a>
-          <a class="connect-choice" href="#claim-offer">
+          <a class="connect-choice" href="#private-feedback">
             <span>Private Feedback</span>
             <strong>Tell the team how brunch went</strong>
             <em>Goes directly to Urban Kitchen</em>
@@ -143,7 +147,12 @@
           <a class="connect-choice" href="https://www.tiktok.com/@urban.kitchen.ut" target="_blank" rel="noreferrer">
             <span>TikTok</span>
             <strong>Follow us on TikTok</strong>
-            <em>Placeholder handle until confirmed</em>
+            <em>Quick clips, specials, and behind the scenes</em>
+          </a>
+          <a class="connect-choice" href="https://www.facebook.com/61591842336361/" target="_blank" rel="noreferrer">
+            <span>Facebook</span>
+            <strong>Follow Urban Kitchen Pleasant Grove</strong>
+            <em>Updates, community posts, and announcements</em>
           </a>
         </div>
       </section>
@@ -193,7 +202,7 @@
             <input type="tel" name="phone" autocomplete="tel" placeholder="801-555-0123" data-phone-input />
           </label>
 
-          <label class="field">
+          <label class="field" id="private-feedback">
             <span>How was your visit?</span>
             <select name="visit_rating" required>
               <option value="">Choose one</option>
@@ -243,8 +252,8 @@
             <p class="section-kicker">What Happens Next</p>
             <h2>simple for guests, useful for us</h2>
             <p>
-              Your submission is saved through our website form system, including contact info,
-              consent, feedback, and the tabletop QR source.
+              We will email your thank-you offer and read every private note. If something needs
+              attention, ask for a manager follow-up and we will know to reach out.
             </p>
           </div>
 
@@ -255,7 +264,7 @@
             </article>
             <article>
               <span>Delivery</span>
-              <p>Email first. SMS only after explicit opt-in and SMS platform setup.</p>
+              <p>Email first. Text messages only if you choose to opt in.</p>
             </article>
             <article>
               <span>Database</span>
@@ -283,6 +292,7 @@
       <div class="social-links" aria-label="Social links">
         <a href="https://www.instagram.com/urban.kitchen.ut/" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>
         <a href="https://www.tiktok.com/@urban.kitchen.ut" target="_blank" rel="noreferrer" aria-label="TikTok">TT</a>
+        <a href="https://www.facebook.com/61591842336361/" target="_blank" rel="noreferrer" aria-label="Facebook">FB</a>
       </div>
       <p class="copyright">&copy; <span data-year></span> Urban Kitchen Brunch House. All rights reserved.</p>
     </footer>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Careers | Urban Kitchen Pleasant Grove</title>
+    <meta name="description" content="Urban Kitchen in Pleasant Grove is hiring for all positions. Tell us where you shine and join our growing restaurant team." />
+    <link rel="canonical" href="https://urbankitchen-pg.com/careers" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Now hiring: all positions | Urban Kitchen" />
+    <meta property="og:description" content="Come build what's next at Urban Kitchen in Pleasant Grove." />
+    <meta property="og:url" content="https://urbankitchen-pg.com/careers" />
+    <meta property="og:image" content="https://urbankitchen-pg.com/assets/current-steak-tips.webp" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header is-scrolled" data-header>
+      <a class="brand" href="/" aria-label="Urban Kitchen home"><span class="brand-mark">urban.</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span><span class="sr-only">Menu</span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="about.html">About</a><a href="menu.html">Menu</a><a href="index.html#gallery">Gallery</a>
+        <a href="location.html">Visit</a><a href="careers.html" aria-current="page">Careers</a>
+        <a class="nav-reserve" href="reservations.html">Reserve a Table</a>
+      </nav>
+    </header>
+
+    <main class="subpage careers-page">
+      <section class="careers-hero">
+        <div>
+          <p class="eyebrow">Join Urban Kitchen</p>
+          <h1>come build what's next.</h1>
+          <p>We're hiring for all positions as Urban Kitchen grows into dinner service. Bring your experience, your energy, and your love of great hospitality.</p>
+        </div>
+      </section>
+
+      <section class="career-layout" aria-label="Urban Kitchen employment interest form">
+        <div class="career-copy">
+          <p class="section-kicker">Now Hiring</p>
+          <h2>all positions</h2>
+          <p>We're meeting candidates for front-of-house and back-of-house opportunities. Tell us what you are interested in and a manager will follow up if there is a fit.</p>
+          <img src="assets/hero-chandeliers.webp" width="1800" height="1350" alt="Urban Kitchen dining room beneath warm chandeliers" loading="lazy" />
+        </div>
+
+        <form class="feedback-form career-form" name="urban-kitchen-careers" method="POST" action="/careers?submitted=1" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+          <input type="hidden" name="form-name" value="urban-kitchen-careers" />
+          <p class="hidden-field"><label>Do not fill this out if you are human: <input name="bot-field" /></label></p>
+          <div class="form-heading">
+            <p class="section-kicker">Apply Today</p>
+            <h2>tell us about you</h2>
+            <p class="form-success" data-career-success hidden>Thank you. Your information has been sent to the Urban Kitchen team.</p>
+          </div>
+          <label class="field"><span>Name <strong>required</strong></span><input type="text" name="name" autocomplete="name" required /></label>
+          <div class="form-row">
+            <label class="field"><span>Email <strong>required</strong></span><input type="email" name="email" autocomplete="email" required /></label>
+            <label class="field"><span>Phone <strong>required</strong></span><input type="tel" name="phone" autocomplete="tel" required /></label>
+          </div>
+          <label class="field">
+            <span>Area of Interest <strong>required</strong></span>
+            <select name="area_of_interest" required>
+              <option value="">Choose one</option>
+              <option>Front of house</option><option>Back of house</option><option>Barista / beverages</option>
+              <option>Leadership</option><option>Open to any position</option>
+            </select>
+          </label>
+          <label class="field"><span>Availability</span><input type="text" name="availability" placeholder="Days, evenings, weekends, start date" /></label>
+          <label class="field"><span>Experience + why Urban Kitchen?</span><textarea name="experience" rows="5" maxlength="1200"></textarea></label>
+          <label class="field"><span>Resume <em>optional</em></span><input type="file" name="resume" accept=".pdf,.doc,.docx" /></label>
+          <label class="checkbox-field"><input type="checkbox" name="contact_consent" value="yes" required /><span>I agree that Urban Kitchen may contact me about employment opportunities.</span></label>
+          <button class="button button-dark" type="submit">Send My Information</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div><a class="brand footer-brand" href="/" aria-label="Urban Kitchen home"><span class="brand-mark">urban.</span></a><p>Brunch House · Pleasant Grove, Utah.</p></div>
+      <div class="footer-find"><span>Find Us</span><p>425 S. North County, Suite D<br />Pleasant Grove, UT</p></div>
+      <div class="social-links" aria-label="Social links"><a href="https://www.instagram.com/urban.kitchen.ut/" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a></div>
+      <p class="copyright">&copy; <span data-year></span> Urban Kitchen Brunch House. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

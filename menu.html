@@ -13,7 +13,7 @@
     <meta property="og:title" content="Urban Kitchen Menu | Brunch in Pleasant Grove, UT" />
     <meta property="og:description" content="Breakfast, brunch, lunch, coffee, skillets, sandwiches, soups, salads, and kids meals in Pleasant Grove." />
     <meta property="og:url" content="https://urbankitchen-pg.com/menu" />
-    <meta property="og:image" content="https://urbankitchen-pg.com/assets/french-toast-close.webp" />
+    <meta property="og:image" content="https://urbankitchen-pg.com/assets/current-french-toast-table.webp" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -89,12 +89,12 @@
       <a class="brand" href="/" aria-label="Urban Kitchen home"><span class="brand-mark">urban.</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span><span class="sr-only">Menu</span></button>
       <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-        <a href="/about">About</a>
-        <a href="/menu" aria-current="page">Menu</a>
-        <a href="/#gallery">Gallery</a>
-        <a href="/location">Visit</a>
-        <a href="/connect">Connect</a>
-        <a class="nav-reserve" href="/reservations">Reserve a Table</a>
+        <a href="about.html">About</a>
+        <a href="menu.html" aria-current="page">Menu</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="location.html">Visit</a>
+        <a href="connect.html">Connect</a>
+        <a class="nav-reserve" href="reservations.html">Reserve a Table</a>
       </nav>
     </header>
 
@@ -104,12 +104,16 @@
           <p class="section-kicker">The Menu</p>
           <h1>made fresh, plated beautifully</h1>
           <p>
-            Every plate is prepared to order. Browse brunch, breakfast, lunch, coffee, and kids menu
-            favorites served in Pleasant Grove, Utah.
+            Every plate is prepared to order. Browse breakfast, skillets, brunch sandwiches, soups, salads,
+            sides, pastries, kids meals, coffee, tea, and Coke products served in Pleasant Grove, Utah.
           </p>
         </div>
 
-        <div class="menu-shell reveal">
+        <div id="old-menu-mount" class="menu-shell reveal" aria-live="polite">
+          <p class="menu-updated">Loading the Urban Kitchen menu&hellip;</p>
+        </div>
+
+        <div class="menu-shell reveal typed-menu-archive" hidden aria-hidden="true">
           <p class="menu-updated">Full menu &middot; descriptions, prices, and dietary notes</p>
           <div class="menu-tabs" role="tablist" aria-label="Menu categories">
             <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" data-menu-tab="shareables">
@@ -273,6 +277,34 @@
             <p>Menu and availability are subject to change.</p>
           </div>
         </div>
+        <script>
+          fetch('/?menu=old-v2', { cache: 'no-store' })
+            .then((response) => response.text())
+            .then((html) => {
+              const page = new DOMParser().parseFromString(html, 'text/html');
+              const oldMenu = page.querySelector('.home-menu-section .menu-shell');
+              const mount = document.getElementById('old-menu-mount');
+              if (!oldMenu || !mount) throw new Error('Old menu markup was not found.');
+              mount.innerHTML = oldMenu.innerHTML;
+              mount.addEventListener('click', (event) => {
+                const tab = event.target.closest('[data-menu-tab]');
+                if (!tab) return;
+                const category = tab.dataset.menuTab;
+                mount.querySelectorAll('[data-menu-tab]').forEach((item) => {
+                  const active = item === tab;
+                  item.classList.toggle('is-active', active);
+                  item.setAttribute('aria-selected', String(active));
+                });
+                mount.querySelectorAll('[data-menu-panel]').forEach((panel) => {
+                  panel.classList.toggle('is-active', panel.dataset.menuPanel === category);
+                });
+              });
+            })
+            .catch(() => {
+              const mount = document.getElementById('old-menu-mount');
+              if (mount) mount.innerHTML = '<p class="menu-updated">Please call Urban Kitchen for today’s menu.</p>';
+            });
+        </script>
       </section>
 
       <section class="menu-seo-section" aria-label="Urban Kitchen brunch menu highlights">
@@ -318,8 +350,8 @@
         </div>
 
         <div class="menu-seo-links">
-          <a class="button button-dark" href="/location">Hours & Directions</a>
-          <a class="button button-outline-dark" href="/reservations">Reserve a Table</a>
+          <a class="button button-dark" href="location.html">Hours & Directions</a>
+          <a class="button button-outline-dark" href="reservations.html">Reserve a Table</a>
         </div>
       </section>
     </main>

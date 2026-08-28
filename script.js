@@ -52,6 +52,10 @@ tabs.forEach((tab) => {
 
 const revealItems = document.querySelectorAll(".reveal");
 const feedbackForm = document.querySelector("[data-feedback-form]");
+const googleReviewsWidget = document.querySelector("[data-google-reviews-widget]");
+const reelVideos = document.querySelectorAll("[data-reel-video]");
+const reservationForm = document.querySelector("[data-reservation-form]");
+const careerSuccess = document.querySelector("[data-career-success]");
 
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
@@ -88,4 +92,142 @@ if (feedbackForm) {
 
     formError.hidden = true;
   });
+}
+
+if (reelVideos.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if ("IntersectionObserver" in window) {
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { rootMargin: "180px 0px", threshold: 0.18 }
+    );
+
+    reelVideos.forEach((video) => videoObserver.observe(video));
+  } else {
+    reelVideos.forEach((video) => video.play().catch(() => {}));
+  }
+}
+
+if (reservationForm) {
+  const status = reservationForm.querySelector("[data-reservation-status]");
+  const submit = reservationForm.querySelector('button[type="submit"]');
+
+  reservationForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    status.classList.remove("is-error", "is-success");
+    status.textContent = "Sending your request...";
+    submit.disabled = true;
+
+    const formData = new FormData(reservationForm);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const storedResponse = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (!storedResponse.ok) {
+        throw new Error("We could not save your request.");
+      }
+
+      const calendarResponse = await fetch("/.netlify/functions/reservations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).catch(() => null);
+
+      if (calendarResponse && !calendarResponse.ok) {
+        console.warn("Reservation saved, but calendar sync is pending.");
+      }
+
+      reservationForm.reset();
+      status.classList.add("is-success");
+      status.textContent = "Request received. Our team will contact you to confirm your table.";
+    } catch (error) {
+      status.classList.add("is-error");
+      status.textContent = `${error.message} Please call 801-406-2010 if you need help.`;
+    } finally {
+      submit.disabled = false;
+    }
+  });
+}
+
+if (careerSuccess && new URLSearchParams(window.location.search).get("submitted") === "1") {
+  careerSuccess.hidden = false;
+  careerSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+if (googleReviewsWidget) {
+  const reviewsList = googleReviewsWidget.querySelector("[data-reviews-list]");
+  const emptyState = googleReviewsWidget.querySelector("[data-reviews-empty]");
+  const rating = googleReviewsWidget.querySelector("[data-reviews-rating]");
+  const count = googleReviewsWidget.querySelector("[data-reviews-count]");
+  const reviewsLink = googleReviewsWidget.querySelector("[data-reviews-link]");
+
+  const renderStars = (value) => {
+    const numeric = Number(value);
+    if (!Number.isFinite(numeric)) return "Google Reviews";
+    return `${numeric.toFixed(1)} ★`;
+  };
+
+  const fetchReviews = () =>
+    fetch("/.netlify/functions/google-reviews")
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (data && data.configured !== false) return data;
+        return fetch("data/google-reviews.json").then((response) => (response.ok ? response.json() : null));
+      })
+      .catch(() =>
+        fetch("data/google-reviews.json").then((response) => (response.ok ? response.json() : null))
+      );
+
+  fetchReviews()
+    .then((data) => {
+      if (!data) return;
+
+      const reviews = Array.isArray(data.reviews) ? data.reviews.slice(0, 3) : [];
+
+      if (data.profileUrl && reviewsLink) {
+        reviewsLink.href = data.profileUrl;
+      }
+
+      if (data.rating) {
+        rating.textContent = renderStars(data.rating);
+      }
+
+      if (data.reviewCount) {
+        count.textContent = `${data.reviewCount} Google reviews from Urban Kitchen guests.`;
+      }
+
+      if (!reviews.length) return;
+
+      reviewsList.textContent = "";
+      reviews.forEach((review) => {
+        const card = document.createElement("article");
+        const stars = document.createElement("span");
+        const quote = document.createElement("blockquote");
+        const author = document.createElement("cite");
+
+        card.className = "review-card";
+        stars.textContent = renderStars(review.rating);
+        quote.textContent = review.text;
+        author.textContent = review.author;
+
+        card.append(stars, quote, author);
+        reviewsList.append(card);
+      });
+
+      emptyState.hidden = true;
+    })
+    .catch(() => {});
 }
