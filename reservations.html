@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dinner Reservations | Urban Kitchen Pleasant Grove</title>
-    <meta name="description" content="Request a table for Urban Kitchen's dinner soft opening in Pleasant Grove on Friday, August 28 or Saturday, August 29, 2026." />
+    <title>Reservations | Urban Kitchen Pleasant Grove</title>
+    <meta name="description" content="Request a brunch or Friday-Saturday dinner reservation at Urban Kitchen in Pleasant Grove, Utah." />
     <link rel="canonical" href="https://urbankitchen-pg.com/reservations" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Dinner is served. | Urban Kitchen" />
-    <meta property="og:description" content="Make your reservation for Urban Kitchen's dinner soft opening, August 28-29 in Pleasant Grove." />
+    <meta property="og:title" content="Reservations | Urban Kitchen" />
+    <meta property="og:description" content="Request a brunch reservation or reserve for Friday and Saturday dinner at Urban Kitchen in Pleasant Grove." />
     <meta property="og:url" content="https://urbankitchen-pg.com/reservations" />
     <meta property="og:image" content="https://urbankitchen-pg.com/assets/hero-chandeliers.webp" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -35,24 +35,24 @@
     <main class="subpage reservation-page">
       <section class="reservation-hero">
         <div>
-          <p class="eyebrow">Dinner · Soft Opening</p>
-          <h1>dinner is served.</h1>
-          <p>Friday + Saturday, August 28-29. Request your preferred time below and our team will contact you to confirm availability.</p>
+          <p class="eyebrow">Reservations</p>
+          <h1>save your table.</h1>
+          <p>Request brunch any day during regular hours, or reserve Friday and Saturday dinner. Our team will contact you to confirm availability.</p>
         </div>
       </section>
 
-      <section class="reservation-layout" aria-label="Dinner reservation request">
+      <section class="reservation-layout" aria-label="Urban Kitchen reservation request">
         <form
           class="feedback-form reservation-form"
-          name="urban-kitchen-dinner-reservations"
+          name="urban-kitchen-reservations"
           method="POST"
           action="/reservations?submitted=1"
           data-netlify="true"
           netlify-honeypot="website"
           data-reservation-form
         >
-          <input type="hidden" name="form-name" value="urban-kitchen-dinner-reservations" />
-          <input type="hidden" name="campaign" value="dinner-soft-open-2026" />
+          <input type="hidden" name="form-name" value="urban-kitchen-reservations" />
+          <input type="hidden" name="campaign" value="standard-reservations" />
           <p class="hidden-field"><label>Do not fill this out if you are human: <input name="website" autocomplete="off" tabindex="-1" /></label></p>
           <div class="form-heading">
             <p class="section-kicker">Request a Table</p>
@@ -90,28 +90,29 @@
 
           <div class="form-row">
             <label class="field">
-              <span>Date <strong>required</strong></span>
-              <select name="date" required>
-                <option value="">Choose a night</option>
-                <option value="2026-08-28">Friday, August 28</option>
-                <option value="2026-08-29">Saturday, August 29</option>
+              <span>Reservation Type <strong>required</strong></span>
+              <select name="service" required data-reservation-service>
+                <option value="">Choose</option>
+                <option value="brunch">Brunch</option>
+                <option value="dinner">Dinner - Friday or Saturday only</option>
               </select>
             </label>
             <label class="field">
+              <span>Date <strong>required</strong></span>
+              <input type="date" name="date" required data-reservation-date />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
               <span>Preferred Time <strong>required</strong></span>
-              <select name="time" required>
+              <select name="time" required data-reservation-time>
                 <option value="">Choose a time</option>
-                <option value="17:00">5:00 PM</option>
-                <option value="17:30">5:30 PM</option>
-                <option value="18:00">6:00 PM</option>
-                <option value="18:30">6:30 PM</option>
-                <option value="19:00">7:00 PM</option>
-                <option value="19:30">7:30 PM</option>
-                <option value="20:00">8:00 PM</option>
-                <option value="20:30">8:30 PM</option>
-                <option value="21:00">9:00 PM</option>
               </select>
             </label>
+            <p class="reservation-time-help" data-reservation-time-help>
+              Choose brunch or dinner and a date to see available request times.
+            </p>
           </div>
 
           <label class="field">
@@ -130,10 +131,11 @@
         <aside class="reservation-aside">
           <img src="assets/current-steak-tips.webp" width="1500" height="1125" alt="Steak tips plated at Urban Kitchen" />
           <div>
-            <p class="section-kicker">Soft Opening</p>
-            <h2>Urban Kitchen after dark</h2>
+            <p class="section-kicker">Hours</p>
+            <h2>brunch daily, dinner Fridays + Saturdays</h2>
             <dl class="reservation-facts">
-              <div><dt>Dates</dt><dd>Friday + Saturday<br />August 28-29</dd></div>
+              <div><dt>Brunch</dt><dd>Mon-Fri 8:00 AM-2:00 PM<br />Sat-Sun 8:00 AM-3:00 PM</dd></div>
+              <div><dt>Dinner</dt><dd>Friday-Saturday<br />5:00 PM-9:00 PM</dd></div>
               <div><dt>Location</dt><dd>425 S. North County, Suite D<br />Pleasant Grove, Utah</dd></div>
               <div><dt>Questions</dt><dd><a href="tel:+18014062010">801-406-2010</a></dd></div>
             </dl>

@@ -2,9 +2,20 @@ const crypto = require("crypto");
 
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
 const GOOGLE_CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar.events";
-const ALLOWED_DATES = new Set(["2026-08-28", "2026-08-29"]);
-const ALLOWED_TIMES = new Set(["17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"]);
 const RESTAURANT_LOCATION = "Urban Kitchen, 425 S. North County, Suite D, Pleasant Grove, UT";
+const RESERVATION_WINDOWS = {
+  brunch: {
+    label: "Brunch",
+    weekday: ["08:00", "13:30"],
+    weekend: ["08:00", "14:30"],
+  },
+  dinner: {
+    label: "Dinner",
+    days: new Set([5, 6]),
+    weekday: ["17:00", "20:30"],
+    weekend: ["17:00", "20:30"],
+  },
+};
 
 const jsonResponse = (statusCode, body) => ({
   statusCode,
@@ -23,6 +34,57 @@ const base64url = (value) =>
     .replace(/\//g, "_");
 
 const clean = (value, maxLength) => String(value || "").trim().slice(0, maxLength);
+
+const parseDateParts = (value) => {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
+  if (!match) return null;
+  const parts = match.slice(1).map(Number);
+  const check = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+  if (
+    check.getUTCFullYear() !== parts[0] ||
+    check.getUTCMonth() !== parts[1] - 1 ||
+    check.getUTCDate() !== parts[2]
+  ) {
+    return null;
+  }
+  return parts;
+};
+
+const getDayOfWeek = (value) => {
+  const parts = parseDateParts(value);
+  if (!parts) return null;
+  return new Date(Date.UTC(parts[0], parts[1] - 1, parts[2])).getUTCDay();
+};
+
+const toMinutes = (time) => {
+  const match = /^(\d{2}):(\d{2})$/.exec(time || "");
+  if (!match) return null;
+  const hour = Number(match[1]);
+  const minute = Number(match[2]);
+  if (hour > 23 || minute > 59) return null;
+  return hour * 60 + minute;
+};
+
+const isAllowedReservationTime = (service, date, time) => {
+  const windowConfig = RESERVATION_WINDOWS[service];
+  const day = getDayOfWeek(date);
+  const requested = toMinutes(time);
+  if (!windowConfig || day === null || requested === null) return false;
+  if (windowConfig.days && !windowConfig.days.has(day)) return false;
+
+  const [start, end] = day === 0 || day === 6 ? windowConfig.weekend : windowConfig.weekday;
+  const startMinutes = toMinutes(start);
+  const endMinutes = toMinutes(end);
+  return requested >= startMinutes && requested <= endMinutes && (requested - startMinutes) % 30 === 0;
+};
+
+const addMinutesToTime = (date, time, durationMinutes) => {
+  const start = toMinutes(time);
+  const end = start + durationMinutes;
+  const hour = Math.floor(end / 60);
+  const minute = end % 60;
+  return `${date}T${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}:00`;
+};
 
 const getAccessToken = async (serviceAccountEmail, privateKey) => {
   const now = Math.floor(Date.now() / 1000);
@@ -77,13 +139,17 @@ exports.handler = async (event) => {
   const name = clean(input.name, 80);
   const email = clean(input.email, 120);
   const phone = clean(input.phone, 30);
+  const service = clean(input.service, 20).toLowerCase();
   const date = clean(input.date, 10);
   const time = clean(input.time, 5);
   const notes = clean(input.notes, 800);
   const partySize = Number.parseInt(input.partySize, 10);
 
-  if (!name || !email || !phone || !ALLOWED_DATES.has(date) || !ALLOWED_TIMES.has(time)) {
+  if (!name || !email || !phone || !parseDateParts(date) || !time || !service) {
     return jsonResponse(400, { error: "Please complete every required field." });
+  }
+  if (!isAllowedReservationTime(service, date, time)) {
+    return jsonResponse(400, { error: "Please choose a reservation time within our current hours." });
   }
   if (!Number.isInteger(partySize) || partySize < 1 || partySize > 16) {
     return jsonResponse(400, { error: "Please choose a valid party size." });
@@ -110,6 +176,7 @@ exports.handler = async (event) => {
           phone,
           date,
           time,
+          service,
           notes,
           partySize,
           source: "urbankitchen-pg.com/reservations",
@@ -140,11 +207,13 @@ exports.handler = async (event) => {
     return jsonResponse(202, { ok: true, calendarSynced: false });
   }
 
-  const start = new Date(`${date}T${time}:00-06:00`);
-  const end = new Date(start.getTime() + 90 * 60 * 1000);
+  const reservationLabel = RESERVATION_WINDOWS[service].label;
+  const startDateTime = `${date}T${time}:00`;
+  const endDateTime = addMinutesToTime(date, time, 90);
   const description = [
     "PENDING - Staff confirmation required",
     "",
+    `Service: ${reservationLabel}`,
     `Guest: ${name}`,
     `Party size: ${partySize}`,
     `Phone: ${phone}`,
@@ -166,15 +235,15 @@ exports.handler = async (event) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          summary: `PENDING - ${name} - Party of ${partySize}`,
+          summary: `PENDING - ${reservationLabel} - ${name} - Party of ${partySize}`,
           description,
           location: RESTAURANT_LOCATION,
-          start: { dateTime: start.toISOString(), timeZone: "America/Denver" },
-          end: { dateTime: end.toISOString(), timeZone: "America/Denver" },
+          start: { dateTime: startDateTime, timeZone: "America/Denver" },
+          end: { dateTime: endDateTime, timeZone: "America/Denver" },
           transparency: "opaque",
           visibility: "private",
           extendedProperties: {
-            private: { reservationStatus: "pending", source: "dinner-soft-open-2026" },
+            private: { reservationStatus: "pending", service, source: "standard-reservations" },
           },
         }),
       }

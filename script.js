@@ -119,6 +119,101 @@ if (reelVideos.length && !window.matchMedia("(prefers-reduced-motion: reduce)").
 if (reservationForm) {
   const status = reservationForm.querySelector("[data-reservation-status]");
   const submit = reservationForm.querySelector('button[type="submit"]');
+  const serviceInput = reservationForm.querySelector("[data-reservation-service]");
+  const dateInput = reservationForm.querySelector("[data-reservation-date]");
+  const timeInput = reservationForm.querySelector("[data-reservation-time]");
+  const timeHelp = reservationForm.querySelector("[data-reservation-time-help]");
+
+  const reservationWindows = {
+    brunch: {
+      label: "Brunch",
+      weekday: ["08:00", "13:30"],
+      weekend: ["08:00", "14:30"],
+    },
+    dinner: {
+      label: "Dinner",
+      days: new Set([5, 6]),
+      weekday: ["17:00", "20:30"],
+      weekend: ["17:00", "20:30"],
+    },
+  };
+
+  const parseDateParts = (value) => {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
+    if (!match) return null;
+    return match.slice(1).map(Number);
+  };
+
+  const getDayOfWeek = (value) => {
+    const parts = parseDateParts(value);
+    if (!parts) return null;
+    const [yearValue, monthValue, dayValue] = parts;
+    return new Date(Date.UTC(yearValue, monthValue - 1, dayValue)).getUTCDay();
+  };
+
+  const formatTimeLabel = (time) => {
+    const [hourValue, minuteValue] = time.split(":").map(Number);
+    const suffix = hourValue >= 12 ? "PM" : "AM";
+    const hour = hourValue % 12 || 12;
+    return `${hour}:${String(minuteValue).padStart(2, "0")} ${suffix}`;
+  };
+
+  const buildTimes = (start, end) => {
+    const [startHour, startMinute] = start.split(":").map(Number);
+    const [endHour, endMinute] = end.split(":").map(Number);
+    const times = [];
+    for (let minutes = startHour * 60 + startMinute; minutes <= endHour * 60 + endMinute; minutes += 30) {
+      const hour = Math.floor(minutes / 60);
+      const minute = minutes % 60;
+      times.push(`${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`);
+    }
+    return times;
+  };
+
+  const setReservationTimeOptions = () => {
+    if (!serviceInput || !dateInput || !timeInput) return;
+
+    const service = serviceInput.value;
+    const dateValue = dateInput.value;
+    const day = getDayOfWeek(dateValue);
+    const windowConfig = reservationWindows[service];
+
+    timeInput.innerHTML = '<option value="">Choose a time</option>';
+
+    if (!windowConfig || day === null) {
+      timeInput.disabled = true;
+      if (timeHelp) timeHelp.textContent = "Choose brunch or dinner and a date to see available request times.";
+      return;
+    }
+
+    if (windowConfig.days && !windowConfig.days.has(day)) {
+      timeInput.disabled = true;
+      if (timeHelp) timeHelp.textContent = "Dinner reservations are currently available Friday and Saturday only.";
+      return;
+    }
+
+    const [start, end] = day === 0 || day === 6 ? windowConfig.weekend : windowConfig.weekday;
+    buildTimes(start, end).forEach((time) => {
+      const option = document.createElement("option");
+      option.value = time;
+      option.textContent = formatTimeLabel(time);
+      timeInput.append(option);
+    });
+    timeInput.disabled = false;
+    if (timeHelp) {
+      timeHelp.textContent = `${windowConfig.label} reservation requests are available from ${formatTimeLabel(start)} to ${formatTimeLabel(end)}.`;
+    }
+  };
+
+  if (dateInput) {
+    const today = new Date();
+    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    dateInput.min = localToday;
+  }
+
+  serviceInput?.addEventListener("change", setReservationTimeOptions);
+  dateInput?.addEventListener("change", setReservationTimeOptions);
+  setReservationTimeOptions();
 
   reservationForm.addEventListener("submit", async (event) => {
     event.preventDefault();
