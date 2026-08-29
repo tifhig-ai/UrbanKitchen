@@ -780,6 +780,14 @@ h1 em {
   text-transform: uppercase;
 }
 
+.dinner-desserts {
+  margin-top: 42px;
+}
+
+.dinner-notes {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .menu-notes {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
