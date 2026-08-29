@@ -314,9 +314,7 @@
               const mount = document.getElementById('old-menu-mount');
               if (!oldMenu || !mount) throw new Error('Old menu markup was not found.');
               mount.innerHTML = oldMenu.innerHTML;
-              mount.addEventListener('click', (event) => {
-                const tab = event.target.closest('[data-menu-tab]');
-                if (!tab) return;
+              const activateMenuTab = (tab) => {
                 const category = tab.dataset.menuTab;
                 mount.querySelectorAll('[data-menu-tab]').forEach((item) => {
                   const active = item === tab;
@@ -326,7 +324,17 @@
                 mount.querySelectorAll('[data-menu-panel]').forEach((panel) => {
                   panel.classList.toggle('is-active', panel.dataset.menuPanel === category);
                 });
+              };
+              mount.addEventListener('click', (event) => {
+                const tab = event.target.closest('[data-menu-tab]');
+                if (!tab) return;
+                activateMenuTab(tab);
               });
+              const initialCategory = window.location.hash.replace('#', '');
+              const initialTab = initialCategory
+                ? [...mount.querySelectorAll('[data-menu-tab]')].find((tab) => tab.dataset.menuTab === initialCategory)
+                : null;
+              if (initialTab) activateMenuTab(initialTab);
             })
             .catch(() => {
               const mount = document.getElementById('old-menu-mount');

@@ -6,6 +6,20 @@ const panels = document.querySelectorAll("[data-menu-panel]");
 const year = document.querySelector("[data-year]");
 const isSubpage = Boolean(document.querySelector(".subpage"));
 
+const activateMenuTab = (tab) => {
+  const category = tab.dataset.menuTab;
+
+  tabs.forEach((item) => {
+    const isActive = item === tab;
+    item.classList.toggle("is-active", isActive);
+    item.setAttribute("aria-selected", String(isActive));
+  });
+
+  panels.forEach((panel) => {
+    panel.classList.toggle("is-active", panel.dataset.menuPanel === category);
+  });
+};
+
 const setHeaderState = () => {
   header.classList.toggle("is-scrolled", isSubpage || window.scrollY > 24);
 };
@@ -36,19 +50,16 @@ nav.addEventListener("click", (event) => {
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
-    const category = tab.dataset.menuTab;
-
-    tabs.forEach((item) => {
-      const isActive = item === tab;
-      item.classList.toggle("is-active", isActive);
-      item.setAttribute("aria-selected", String(isActive));
-    });
-
-    panels.forEach((panel) => {
-      panel.classList.toggle("is-active", panel.dataset.menuPanel === category);
-    });
+    activateMenuTab(tab);
   });
 });
+
+const initialMenuHash = window.location.hash.replace("#", "");
+const initialMenuTab = initialMenuHash ? [...tabs].find((tab) => tab.dataset.menuTab === initialMenuHash) : null;
+if (initialMenuTab) {
+  activateMenuTab(initialMenuTab);
+  document.querySelector(".home-menu-section")?.scrollIntoView({ block: "start" });
+}
 
 const revealItems = document.querySelectorAll(".reveal");
 const feedbackForm = document.querySelector("[data-feedback-form]");
