@@ -123,7 +123,10 @@ if (reservationForm) {
   const dateInput = reservationForm.querySelector("[data-reservation-date]");
   const timeInput = reservationForm.querySelector("[data-reservation-time]");
   const timeHelp = reservationForm.querySelector("[data-reservation-time-help]");
-  const reservationMinLeadMs = 2 * 60 * 60 * 1000;
+  const reservationLeadTimesMs = {
+    brunch: 2 * 60 * 60 * 1000,
+    dinner: 1 * 60 * 60 * 1000,
+  };
 
   const reservationWindows = {
     brunch: {
@@ -211,9 +214,10 @@ if (reservationForm) {
     }
 
     const [start, end] = day === 0 || day === 6 ? windowConfig.weekend : windowConfig.weekday;
+    const minLeadMs = reservationLeadTimesMs[service] || reservationLeadTimesMs.brunch;
     const availableTimes = buildTimes(start, end).filter((time) => {
       const reservationDateTime = getReservationDateTime(dateValue, time);
-      return reservationDateTime && reservationDateTime.getTime() - Date.now() >= reservationMinLeadMs;
+      return reservationDateTime && reservationDateTime.getTime() - Date.now() >= minLeadMs;
     });
 
     availableTimes.forEach((time) => {
@@ -224,9 +228,10 @@ if (reservationForm) {
     });
     timeInput.disabled = availableTimes.length === 0;
     if (timeHelp) {
+      const leadHours = Math.round(minLeadMs / (60 * 60 * 1000));
       timeHelp.textContent = availableTimes.length
-        ? `${windowConfig.label} reservation requests are available from ${formatTimeLabel(start)} to ${formatTimeLabel(end)}. Please request at least 2 hours ahead.`
-        : "No reservation times are available for that service and date with at least 2 hours notice.";
+        ? `${windowConfig.label} reservation requests are available from ${formatTimeLabel(start)} to ${formatTimeLabel(end)}. Please request at least ${leadHours} hour${leadHours === 1 ? "" : "s"} ahead.`
+        : `No reservation times are available for that service and date with at least ${leadHours} hour${leadHours === 1 ? "" : "s"} notice.`;
     }
   };
 
@@ -253,8 +258,11 @@ if (reservationForm) {
         throw new Error("Brunch reservations are not available for same-day requests right now.");
       }
 
-      if (!requestedDateTime || requestedDateTime.getTime() - Date.now() < reservationMinLeadMs) {
-        throw new Error("Please choose a reservation time at least 2 hours from now.");
+      const minLeadMs = reservationLeadTimesMs[payload.service] || reservationLeadTimesMs.brunch;
+      const leadHours = Math.round(minLeadMs / (60 * 60 * 1000));
+
+      if (!requestedDateTime || requestedDateTime.getTime() - Date.now() < minLeadMs) {
+        throw new Error(`Please choose a reservation time at least ${leadHours} hour${leadHours === 1 ? "" : "s"} from now.`);
       }
 
       const storedResponse = await fetch("/", {

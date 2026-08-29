@@ -4,7 +4,10 @@ const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
 const GOOGLE_CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar.events";
 const RESTAURANT_LOCATION = "Urban Kitchen, 425 S. North County, Suite D, Pleasant Grove, UT";
 const RESTAURANT_TIME_ZONE = "America/Denver";
-const MIN_LEAD_MS = 2 * 60 * 60 * 1000;
+const RESERVATION_LEAD_TIMES_MS = {
+  brunch: 2 * 60 * 60 * 1000,
+  dinner: 1 * 60 * 60 * 1000,
+};
 const RESERVATION_WINDOWS = {
   brunch: {
     label: "Brunch",
@@ -192,8 +195,12 @@ exports.handler = async (event) => {
   if (service === "brunch" && date === getTodayInTimeZone(RESTAURANT_TIME_ZONE)) {
     return jsonResponse(400, { error: "Brunch reservations are not available for same-day requests right now." });
   }
-  if (!requestedDateTime || requestedDateTime.getTime() - Date.now() < MIN_LEAD_MS) {
-    return jsonResponse(400, { error: "Please choose a reservation time at least 2 hours from now." });
+  const minLeadMs = RESERVATION_LEAD_TIMES_MS[service] || RESERVATION_LEAD_TIMES_MS.brunch;
+  const leadHours = Math.round(minLeadMs / (60 * 60 * 1000));
+  if (!requestedDateTime || requestedDateTime.getTime() - Date.now() < minLeadMs) {
+    return jsonResponse(400, {
+      error: `Please choose a reservation time at least ${leadHours} hour${leadHours === 1 ? "" : "s"} from now.`,
+    });
   }
   if (!Number.isInteger(partySize) || partySize < 1 || partySize > 16) {
     return jsonResponse(400, { error: "Please choose a valid party size." });
