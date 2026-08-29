@@ -3,6 +3,8 @@ const crypto = require("crypto");
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
 const GOOGLE_CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar.events";
 const RESTAURANT_LOCATION = "Urban Kitchen, 425 S. North County, Suite D, Pleasant Grove, UT";
+const RESTAURANT_TIME_ZONE = "America/Denver";
+const MIN_LEAD_MS = 2 * 60 * 60 * 1000;
 const RESERVATION_WINDOWS = {
   brunch: {
     label: "Brunch",
@@ -86,6 +88,30 @@ const addMinutesToTime = (date, time, durationMinutes) => {
   return `${date}T${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}:00`;
 };
 
+const getTimeZoneOffsetMinutes = (date, timeZone) => {
+  const shortOffset = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    timeZoneName: "shortOffset",
+  })
+    .formatToParts(date)
+    .find((part) => part.type === "timeZoneName")?.value;
+  const match = /^GMT([+-])(\d{1,2})(?::(\d{2}))?$/.exec(shortOffset || "");
+  if (!match) return 0;
+  const sign = match[1] === "-" ? -1 : 1;
+  return sign * (Number(match[2]) * 60 + Number(match[3] || 0));
+};
+
+const getZonedReservationDate = (date, time, timeZone) => {
+  const parts = parseDateParts(date);
+  const minutes = toMinutes(time);
+  if (!parts || minutes === null) return null;
+  const hour = Math.floor(minutes / 60);
+  const minute = minutes % 60;
+  const utcGuess = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2], hour, minute));
+  const offsetMinutes = getTimeZoneOffsetMinutes(utcGuess, timeZone);
+  return new Date(utcGuess.getTime() - offsetMinutes * 60 * 1000);
+};
+
 const getAccessToken = async (serviceAccountEmail, privateKey) => {
   const now = Math.floor(Date.now() / 1000);
   const header = base64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
@@ -150,6 +176,10 @@ exports.handler = async (event) => {
   }
   if (!isAllowedReservationTime(service, date, time)) {
     return jsonResponse(400, { error: "Please choose a reservation time within our current hours." });
+  }
+  const requestedDateTime = getZonedReservationDate(date, time, RESTAURANT_TIME_ZONE);
+  if (!requestedDateTime || requestedDateTime.getTime() - Date.now() < MIN_LEAD_MS) {
+    return jsonResponse(400, { error: "Please choose a reservation time at least 2 hours from now." });
   }
   if (!Number.isInteger(partySize) || partySize < 1 || partySize > 16) {
     return jsonResponse(400, { error: "Please choose a valid party size." });
@@ -238,8 +268,8 @@ exports.handler = async (event) => {
           summary: `PENDING - ${reservationLabel} - ${name} - Party of ${partySize}`,
           description,
           location: RESTAURANT_LOCATION,
-          start: { dateTime: startDateTime, timeZone: "America/Denver" },
-          end: { dateTime: endDateTime, timeZone: "America/Denver" },
+          start: { dateTime: startDateTime, timeZone: RESTAURANT_TIME_ZONE },
+          end: { dateTime: endDateTime, timeZone: RESTAURANT_TIME_ZONE },
           transparency: "opaque",
           visibility: "private",
           extendedProperties: {

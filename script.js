@@ -123,6 +123,7 @@ if (reservationForm) {
   const dateInput = reservationForm.querySelector("[data-reservation-date]");
   const timeInput = reservationForm.querySelector("[data-reservation-time]");
   const timeHelp = reservationForm.querySelector("[data-reservation-time-help]");
+  const reservationMinLeadMs = 2 * 60 * 60 * 1000;
 
   const reservationWindows = {
     brunch: {
@@ -149,6 +150,14 @@ if (reservationForm) {
     if (!parts) return null;
     const [yearValue, monthValue, dayValue] = parts;
     return new Date(Date.UTC(yearValue, monthValue - 1, dayValue)).getUTCDay();
+  };
+
+  const getReservationDateTime = (date, time) => {
+    const parts = parseDateParts(date);
+    if (!parts || !time) return null;
+    const [hourValue, minuteValue] = time.split(":").map(Number);
+    if (!Number.isFinite(hourValue) || !Number.isFinite(minuteValue)) return null;
+    return new Date(parts[0], parts[1] - 1, parts[2], hourValue, minuteValue);
   };
 
   const formatTimeLabel = (time) => {
@@ -193,15 +202,22 @@ if (reservationForm) {
     }
 
     const [start, end] = day === 0 || day === 6 ? windowConfig.weekend : windowConfig.weekday;
-    buildTimes(start, end).forEach((time) => {
+    const availableTimes = buildTimes(start, end).filter((time) => {
+      const reservationDateTime = getReservationDateTime(dateValue, time);
+      return reservationDateTime && reservationDateTime.getTime() - Date.now() >= reservationMinLeadMs;
+    });
+
+    availableTimes.forEach((time) => {
       const option = document.createElement("option");
       option.value = time;
       option.textContent = formatTimeLabel(time);
       timeInput.append(option);
     });
-    timeInput.disabled = false;
+    timeInput.disabled = availableTimes.length === 0;
     if (timeHelp) {
-      timeHelp.textContent = `${windowConfig.label} reservation requests are available from ${formatTimeLabel(start)} to ${formatTimeLabel(end)}.`;
+      timeHelp.textContent = availableTimes.length
+        ? `${windowConfig.label} reservation requests are available from ${formatTimeLabel(start)} to ${formatTimeLabel(end)}. Please request at least 2 hours ahead.`
+        : "No reservation times are available for that service and date with at least 2 hours notice.";
     }
   };
 
@@ -223,8 +239,13 @@ if (reservationForm) {
 
     const formData = new FormData(reservationForm);
     const payload = Object.fromEntries(formData.entries());
+    const requestedDateTime = getReservationDateTime(payload.date, payload.time);
 
     try {
+      if (!requestedDateTime || requestedDateTime.getTime() - Date.now() < reservationMinLeadMs) {
+        throw new Error("Please choose a reservation time at least 2 hours from now.");
+      }
+
       const storedResponse = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
