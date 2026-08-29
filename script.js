@@ -145,6 +145,9 @@ if (reservationForm) {
     return match.slice(1).map(Number);
   };
 
+  const getLocalDateString = (date = new Date()) =>
+    new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
   const getDayOfWeek = (value) => {
     const parts = parseDateParts(value);
     if (!parts) return null;
@@ -201,6 +204,12 @@ if (reservationForm) {
       return;
     }
 
+    if (service === "brunch" && dateValue === getLocalDateString()) {
+      timeInput.disabled = true;
+      if (timeHelp) timeHelp.textContent = "Brunch reservations are not available for same-day requests right now. Please choose a future date.";
+      return;
+    }
+
     const [start, end] = day === 0 || day === 6 ? windowConfig.weekend : windowConfig.weekday;
     const availableTimes = buildTimes(start, end).filter((time) => {
       const reservationDateTime = getReservationDateTime(dateValue, time);
@@ -222,9 +231,7 @@ if (reservationForm) {
   };
 
   if (dateInput) {
-    const today = new Date();
-    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-    dateInput.min = localToday;
+    dateInput.min = getLocalDateString();
   }
 
   serviceInput?.addEventListener("change", setReservationTimeOptions);
@@ -242,6 +249,10 @@ if (reservationForm) {
     const requestedDateTime = getReservationDateTime(payload.date, payload.time);
 
     try {
+      if (payload.service === "brunch" && payload.date === getLocalDateString()) {
+        throw new Error("Brunch reservations are not available for same-day requests right now.");
+      }
+
       if (!requestedDateTime || requestedDateTime.getTime() - Date.now() < reservationMinLeadMs) {
         throw new Error("Please choose a reservation time at least 2 hours from now.");
       }

@@ -112,6 +112,17 @@ const getZonedReservationDate = (date, time, timeZone) => {
   return new Date(utcGuess.getTime() - offsetMinutes * 60 * 1000);
 };
 
+const getTodayInTimeZone = (timeZone) => {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+};
+
 const getAccessToken = async (serviceAccountEmail, privateKey) => {
   const now = Math.floor(Date.now() / 1000);
   const header = base64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
@@ -178,6 +189,9 @@ exports.handler = async (event) => {
     return jsonResponse(400, { error: "Please choose a reservation time within our current hours." });
   }
   const requestedDateTime = getZonedReservationDate(date, time, RESTAURANT_TIME_ZONE);
+  if (service === "brunch" && date === getTodayInTimeZone(RESTAURANT_TIME_ZONE)) {
+    return jsonResponse(400, { error: "Brunch reservations are not available for same-day requests right now." });
+  }
   if (!requestedDateTime || requestedDateTime.getTime() - Date.now() < MIN_LEAD_MS) {
     return jsonResponse(400, { error: "Please choose a reservation time at least 2 hours from now." });
   }
