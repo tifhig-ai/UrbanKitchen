@@ -281,6 +281,17 @@ if (reservationForm) {
         throw new Error(`Please choose a reservation time at least ${leadHours} hour${leadHours === 1 ? "" : "s"} from now.`);
       }
 
+      const calendarResponse = await fetch("/.netlify/functions/reservations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const calendarResult = await calendarResponse.json().catch(() => ({}));
+
+      if (!calendarResponse.ok || !calendarResult.calendarSynced) {
+        throw new Error(calendarResult.error || "We could not add your request to our reservation calendar.");
+      }
+
       const storedResponse = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
