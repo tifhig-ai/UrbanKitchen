@@ -9,11 +9,21 @@ const getFormName = (data = {}) => String(
   data["form-name"] || data.formName || data.form_name || ""
 ).trim();
 
+const isReservationSubmission = (data = {}) => {
+  const formName = getFormName(data);
+  if (RESERVATION_FORM_NAMES.has(formName)) return true;
+  if (String(data.campaign || "").trim() === "standard-reservations") return true;
+
+  return ["name", "email", "phone", "date", "time", "service", "partySize"]
+    .every((key) => String(data[key] || "").trim())
+    && String(data.requestAcknowledged || "").trim() === "yes";
+};
+
 export const createFormSubmittedHandler = (reservationHandler = reservations.handler) => async (event) => {
   const data = event?.data || {};
   const formName = getFormName(data);
 
-  if (!RESERVATION_FORM_NAMES.has(formName)) return;
+  if (!isReservationSubmission(data)) return;
 
   const response = await reservationHandler({
     httpMethod: "POST",
@@ -24,7 +34,7 @@ export const createFormSubmittedHandler = (reservationHandler = reservations.han
   if (response.statusCode < 200 || response.statusCode >= 300 || !result.calendarSynced) {
     console.error(JSON.stringify({
       event: "reservation-calendar-sync-failed",
-      formName,
+      formName: formName || null,
       statusCode: response.statusCode,
       reservationRequestId: data.reservationRequestId || null,
     }));
@@ -33,7 +43,7 @@ export const createFormSubmittedHandler = (reservationHandler = reservations.han
 
   console.log(JSON.stringify({
     event: "reservation-calendar-sync-succeeded",
-    formName,
+    formName: formName || null,
     calendarEventId: result.requestId,
     duplicatePrevented: Boolean(result.duplicatePrevented),
   }));

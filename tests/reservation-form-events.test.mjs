@@ -33,6 +33,33 @@ test("syncs current and legacy reservation forms", async () => {
   assert.deepEqual(seen, formNames);
 });
 
+test("syncs Netlify reservation payloads when form-name is omitted", async () => {
+  let calls = 0;
+  const handler = createFormSubmittedHandler(async () => {
+    calls += 1;
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ calendarSynced: true, requestId: "calendar-event" }),
+    };
+  });
+
+  await handler({
+    data: {
+      campaign: "standard-reservations",
+      name: "Guest Name",
+      email: "guest@example.com",
+      phone: "801-555-0100",
+      service: "dinner",
+      date: "2026-09-12",
+      time: "17:00",
+      partySize: "2",
+      requestAcknowledged: "yes",
+    },
+  });
+
+  assert.equal(calls, 1);
+});
+
 test("raises an error when a verified reservation does not reach the calendar", async () => {
   const handler = createFormSubmittedHandler(async () => ({
     statusCode: 502,
