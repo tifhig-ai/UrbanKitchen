@@ -139,6 +139,8 @@ if (reservationForm) {
     brunch: 2 * 60 * 60 * 1000,
     dinner: 1 * 60 * 60 * 1000,
   };
+  const createReservationRequestId = () => globalThis.crypto?.randomUUID?.()
+    || `uk-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
   const reservationWindows = {
     brunch: {
@@ -254,8 +256,8 @@ if (reservationForm) {
   serviceInput?.addEventListener("change", setReservationTimeOptions);
   dateInput?.addEventListener("change", setReservationTimeOptions);
   if (requestIdInput) {
-    requestIdInput.value = "";
     requestIdInput.defaultValue = "";
+    requestIdInput.value = createReservationRequestId();
   }
   setReservationTimeOptions();
 
@@ -266,8 +268,7 @@ if (reservationForm) {
     submit.disabled = true;
 
     if (requestIdInput && !requestIdInput.value) {
-      requestIdInput.value = globalThis.crypto?.randomUUID?.()
-        || `uk-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      requestIdInput.value = createReservationRequestId();
     }
     const formData = new FormData(reservationForm);
     const payload = Object.fromEntries(formData.entries());
@@ -308,8 +309,8 @@ if (reservationForm) {
 
       reservationForm.reset();
       if (requestIdInput) {
-        requestIdInput.value = "";
         requestIdInput.defaultValue = "";
+        requestIdInput.value = createReservationRequestId();
       }
       status.classList.add("is-success");
       status.textContent = "Request received. Our team will contact you to confirm your table.";
