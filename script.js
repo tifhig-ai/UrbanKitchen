@@ -260,6 +260,11 @@ if (reservationForm) {
     status.textContent = "Sending your request...";
     submit.disabled = true;
 
+    const requestIdInput = reservationForm.querySelector("[data-reservation-request-id]");
+    if (requestIdInput && !requestIdInput.value) {
+      requestIdInput.value = globalThis.crypto?.randomUUID?.()
+        || `uk-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    }
     const formData = new FormData(reservationForm);
     const payload = Object.fromEntries(formData.entries());
     const requestedDateTime = getReservationDateTime(payload.date, payload.time);
@@ -284,16 +289,6 @@ if (reservationForm) {
 
       if (!storedResponse.ok) {
         throw new Error("We could not save your request.");
-      }
-
-      const calendarResponse = await fetch("/.netlify/functions/reservations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }).catch(() => null);
-
-      if (calendarResponse && !calendarResponse.ok) {
-        console.warn("Reservation saved, but calendar sync is pending.");
       }
 
       reservationForm.reset();

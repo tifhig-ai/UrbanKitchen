@@ -40,6 +40,19 @@ const base64url = (value) =>
 
 const clean = (value, maxLength) => String(value || "").trim().slice(0, maxLength);
 
+const createCalendarEventId = (input, requestId) => {
+  const canonicalRequest = requestId || [
+    clean(input.service, 20).toLowerCase(),
+    clean(input.date, 10),
+    clean(input.time, 5),
+    clean(input.email, 120).toLowerCase(),
+    clean(input.phone, 30).replace(/\D/g, ""),
+    clean(input.name, 80).toLowerCase(),
+  ].join("|");
+
+  return `ukr${crypto.createHash("sha256").update(canonicalRequest).digest("hex").slice(0, 40)}`;
+};
+
 const parseDateParts = (value) => {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
   if (!match) return null;
@@ -183,6 +196,7 @@ exports.handler = async (event) => {
   const date = clean(input.date, 10);
   const time = clean(input.time, 5);
   const notes = clean(input.notes, 800);
+  const reservationRequestId = clean(input.reservationRequestId || input.requestId, 100);
   const partySize = Number.parseInt(input.partySize, 10);
 
   if (!name || !email || !phone || !parseDateParts(date) || !time || !service) {
@@ -214,6 +228,7 @@ exports.handler = async (event) => {
 
   const webhookUrl = process.env.GOOGLE_CALENDAR_WEBHOOK_URL;
   const webhookSecret = process.env.GOOGLE_CALENDAR_WEBHOOK_SECRET;
+  const calendarEventId = createCalendarEventId(input, reservationRequestId);
 
   if (webhookUrl && webhookSecret) {
     try {
@@ -231,6 +246,8 @@ exports.handler = async (event) => {
           notes,
           partySize,
           source: "urbankitchen-pg.com/reservations",
+          reservationRequestId: reservationRequestId || calendarEventId,
+          calendarEventId,
         }),
       });
       const result = await response.json();
@@ -273,6 +290,7 @@ exports.handler = async (event) => {
     notes ? `Notes: ${notes}` : "Notes: None",
     "",
     "Submitted through urbankitchen-pg.com/reservations",
+    `Reservation request ID: ${reservationRequestId || calendarEventId}`,
   ].join("\n");
 
   try {
@@ -286,6 +304,7 @@ exports.handler = async (event) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          id: calendarEventId,
           summary: `PENDING - ${reservationLabel} - ${name} - Party of ${partySize}`,
           description,
           location: RESTAURANT_LOCATION,
@@ -294,11 +313,31 @@ exports.handler = async (event) => {
           transparency: "opaque",
           visibility: "private",
           extendedProperties: {
-            private: { reservationStatus: "pending", service, source: "standard-reservations" },
+            private: {
+              reservationStatus: "pending",
+              service,
+              source: "standard-reservations",
+              reservationRequestId: reservationRequestId || calendarEventId,
+            },
           },
         }),
       }
     );
+
+    if (response.status === 409) {
+      const existingResponse = await fetch(
+        `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events/${calendarEventId}`,
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+      );
+      if (existingResponse.ok) {
+        return jsonResponse(200, {
+          ok: true,
+          calendarSynced: true,
+          requestId: calendarEventId,
+          duplicatePrevented: true,
+        });
+      }
+    }
 
     if (!response.ok) {
       throw new Error(`Google Calendar returned ${response.status}.`);
@@ -310,3 +349,5 @@ exports.handler = async (event) => {
     return jsonResponse(502, { error: "Your request could not be added to the reservation calendar." });
   }
 };
+
+exports.createCalendarEventId = createCalendarEventId;
