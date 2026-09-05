@@ -134,6 +134,7 @@ if (reservationForm) {
   const dateInput = reservationForm.querySelector("[data-reservation-date]");
   const timeInput = reservationForm.querySelector("[data-reservation-time]");
   const timeHelp = reservationForm.querySelector("[data-reservation-time-help]");
+  const requestIdInput = reservationForm.querySelector("[data-reservation-request-id]");
   const reservationLeadTimesMs = {
     brunch: 2 * 60 * 60 * 1000,
     dinner: 1 * 60 * 60 * 1000,
@@ -252,6 +253,10 @@ if (reservationForm) {
 
   serviceInput?.addEventListener("change", setReservationTimeOptions);
   dateInput?.addEventListener("change", setReservationTimeOptions);
+  if (requestIdInput) {
+    requestIdInput.value = "";
+    requestIdInput.defaultValue = "";
+  }
   setReservationTimeOptions();
 
   reservationForm.addEventListener("submit", async (event) => {
@@ -260,7 +265,6 @@ if (reservationForm) {
     status.textContent = "Sending your request...";
     submit.disabled = true;
 
-    const requestIdInput = reservationForm.querySelector("[data-reservation-request-id]");
     if (requestIdInput && !requestIdInput.value) {
       requestIdInput.value = globalThis.crypto?.randomUUID?.()
         || `uk-${Date.now()}-${Math.random().toString(16).slice(2)}`;
@@ -303,6 +307,10 @@ if (reservationForm) {
       }
 
       reservationForm.reset();
+      if (requestIdInput) {
+        requestIdInput.value = "";
+        requestIdInput.defaultValue = "";
+      }
       status.classList.add("is-success");
       status.textContent = "Request received. Our team will contact you to confirm your table.";
     } catch (error) {
