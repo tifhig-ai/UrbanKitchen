@@ -150,7 +150,6 @@ if (reservationForm) {
     },
     dinner: {
       label: "Dinner",
-      days: new Set([5, 6]),
       weekday: ["17:00", "20:30"],
       weekend: ["17:00", "20:30"],
     },
@@ -212,12 +211,6 @@ if (reservationForm) {
     if (!windowConfig || day === null) {
       timeInput.disabled = true;
       if (timeHelp) timeHelp.textContent = "Choose brunch or dinner and a date to see available request times.";
-      return;
-    }
-
-    if (windowConfig.days && !windowConfig.days.has(day)) {
-      timeInput.disabled = true;
-      if (timeHelp) timeHelp.textContent = "Dinner reservations are currently available Friday and Saturday only.";
       return;
     }
 
@@ -391,4 +384,11 @@ if (googleReviewsWidget) {
       emptyState.hidden = true;
     })
     .catch(() => {});
+}
+
+// Keep the launch announcement accurate after opening night in Utah.
+const dinnerLaunch = document.querySelector("[data-dinner-launch]");
+if (dinnerLaunch) {
+  const restaurantDate = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Denver", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  if (restaurantDate > "2026-10-01") dinnerLaunch.textContent = "Join us for dinner seven nights a week.";
 }

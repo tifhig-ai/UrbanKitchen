@@ -16,7 +16,6 @@ const RESERVATION_WINDOWS = {
   },
   dinner: {
     label: "Dinner",
-    days: new Set([5, 6]),
     weekday: ["17:00", "20:30"],
     weekend: ["17:00", "20:30"],
   },
@@ -39,6 +38,21 @@ const base64url = (value) =>
     .replace(/\//g, "_");
 
 const clean = (value, maxLength) => String(value || "").trim().slice(0, maxLength);
+
+const plainText = (value, maxLength) =>
+  clean(
+    String(value || "")
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<\/(?:p|div|li|ul|ol|h[1-6])\s*>/gi, "\n")
+      .replace(/<[^>]+>/g, "")
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&amp;/gi, "&")
+      .replace(/&lt;/gi, "<")
+      .replace(/&gt;/gi, ">")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n"),
+    maxLength
+  );
 
 const createCalendarEventId = (input, requestId) => {
   const canonicalRequest = requestId || [
@@ -195,7 +209,7 @@ exports.handler = async (event) => {
   const service = clean(input.service, 20).toLowerCase();
   const date = clean(input.date, 10);
   const time = clean(input.time, 5);
-  const notes = clean(input.notes, 800);
+  const notes = plainText(input.notes, 800);
   const reservationRequestId = clean(input.reservationRequestId || input.requestId, 100);
   const partySize = Number.parseInt(input.partySize, 10);
 
