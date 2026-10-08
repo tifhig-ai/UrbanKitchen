@@ -211,7 +211,9 @@ exports.handler = async (event) => {
   const time = clean(input.time, 5);
   const notes = plainText(input.notes, 800);
   const reservationRequestId = clean(input.reservationRequestId || input.requestId, 100);
-  const partySize = Number.parseInt(input.partySize, 10);
+  const partySizeRaw = clean(input.partySize, 20);
+  const partySize = Number.parseInt(partySizeRaw, 10);
+  const partySizeLabel = partySizeRaw.includes("+") ? `${partySize}+` : String(partySize);
 
   if (!name || !email || !phone || !parseDateParts(date) || !time || !service) {
     return jsonResponse(400, { error: "Please complete every required field." });
@@ -230,7 +232,7 @@ exports.handler = async (event) => {
       error: `Please choose a reservation time at least ${leadHours} hour${leadHours === 1 ? "" : "s"} from now.`,
     });
   }
-  if (!Number.isInteger(partySize) || partySize < 1 || partySize > 16) {
+  if (!Number.isInteger(partySize) || partySize < 1 || partySize > 20) {
     return jsonResponse(400, { error: "Please choose a valid party size." });
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -259,6 +261,7 @@ exports.handler = async (event) => {
           service,
           notes,
           partySize,
+          partySizeLabel,
           source: "urbankitchen-pg.com/reservations",
           reservationRequestId: reservationRequestId || calendarEventId,
           calendarEventId,
@@ -297,7 +300,7 @@ exports.handler = async (event) => {
     "",
     `Service: ${reservationLabel}`,
     `Guest: ${name}`,
-    `Party size: ${partySize}`,
+    `Party size: ${partySizeLabel}`,
     `Phone: ${phone}`,
     `Email: ${email}`,
     `Requested: ${date} at ${time}`,
@@ -319,7 +322,7 @@ exports.handler = async (event) => {
         },
         body: JSON.stringify({
           id: calendarEventId,
-          summary: `PENDING - ${reservationLabel} - ${name} - Party of ${partySize}`,
+          summary: `PENDING - ${reservationLabel} - ${name} - Party of ${partySizeLabel}`,
           description,
           location: RESTAURANT_LOCATION,
           start: { dateTime: startDateTime, timeZone: RESTAURANT_TIME_ZONE },
