@@ -20,108 +20,1034 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Menu",
-        "@id": "https://urbankitchen-pg.com/menu#menu",
-        "name": "Urban Kitchen Menu",
-        "url": "https://urbankitchen-pg.com/menu",
-        "inLanguage": "en-US",
-        "provider": {
-          "@type": "Restaurant",
-          "@id": "https://urbankitchen-pg.com/#restaurant",
-          "name": "Urban Kitchen",
-          "telephone": "+1-801-406-2010",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "425 S. North County, Suite D",
-            "addressLocality": "Pleasant Grove",
-            "addressRegion": "UT",
-            "addressCountry": "US"
+    <script id="menu-structured-data" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "@id": "https://urbankitchen-pg.com/menu#menu",
+  "name": "Urban Kitchen Menu",
+  "url": "https://urbankitchen-pg.com/menu",
+  "inLanguage": "en-US",
+  "provider": {
+    "@type": "Restaurant",
+    "@id": "https://urbankitchen-pg.com/#restaurant",
+    "name": "Urban Kitchen",
+    "telephone": "+1-801-406-2010",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "425 S. North County, Suite D",
+      "addressLocality": "Pleasant Grove",
+      "addressRegion": "UT",
+      "addressCountry": "US"
+    }
+  },
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Breakfast",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "The Basic",
+          "description": "Two farm fresh eggs any style, crispy hashbrowns, choice of bacon, sausage, or ham, and artisan toast.",
+          "offers": {
+            "@type": "Offer",
+            "price": "13",
+            "priceCurrency": "USD"
           }
         },
-        "hasMenuSection": [
-          {
-            "@type": "MenuSection",
-            "name": "Breakfast",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "The Basic", "description": "Two eggs any style, crispy hashbrowns, choice of bacon, sausage, or ham, and artisan toast.", "offers": { "@type": "Offer", "price": "14", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Urban Guacamole Toast", "description": "Grilled sourdough, avocado, bacon, corn-poblano relish, poached eggs, balsamic glaze, and microgreens.", "offers": { "@type": "Offer", "price": "17", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Urban Benedict", "description": "English muffin, bacon, poached eggs, lemon hollandaise, fried capers, and crispy hashbrowns.", "offers": { "@type": "Offer", "price": "17", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Breakfast Burrito", "description": "Scrambled eggs, chorizo, crispy tots, cheddar, pico de gallo, salsa, cilantro crema, and mixed greens.", "offers": { "@type": "Offer", "price": "17", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Mascarpone Berry Stuffed French Toast", "description": "Brioche, vanilla mascarpone cream, seasonal berry compote, powdered sugar, and maple syrup.", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "USD" } }
-            ]
-          },
-          {
-            "@type": "MenuSection",
-            "name": "Skillets",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Ranchero Skillet", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Gravy Skillet", "offers": { "@type": "Offer", "price": "17", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Chilaquiles", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "USD" } }
-            ]
-          },
-          {
-            "@type": "MenuSection",
-            "name": "Brunch Sandwiches",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Pesto Chicken Sandwich", "offers": { "@type": "Offer", "price": "17", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Pulled Pork Sandwich", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Million Dollar Bacon Burger", "offers": { "@type": "Offer", "price": "22", "priceCurrency": "USD" } }
-            ]
-          },
-          {
-            "@type": "MenuSection",
-            "name": "Dinner Small Plates",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Roast Beef & Whipped Ricotta", "description": "Thinly sliced top round roast beef, whipped ricotta, and house-pickled onions.", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Burrata & Heirloom Tomatoes", "description": "Silky burrata with heirloom and cherry tomatoes, fresh basil, and extra virgin olive oil.", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Tuna Tartare", "description": "Hand-chopped fresh tuna with capers, extra virgin olive oil, and a touch of chilli sauce.", "offers": { "@type": "Offer", "price": "22", "priceCurrency": "USD" } }
-            ]
-          },
-          {
-            "@type": "MenuSection",
-            "name": "Dinner Mains",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Prime Filet Mignon", "description": "Prime beef tenderloin served medium-rare with creamy Yukon Gold potatoes and roasted asparagus.", "offers": { "@type": "Offer", "price": "54", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Braised Beef Short Ribs", "description": "Slow-braised beef short rib, natural jus, carrot-ginger purée, and sautéed broccoli.", "offers": { "@type": "Offer", "price": "42", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Chicken Supreme", "description": "Pan-roasted chicken breast with creamy Yukon Gold potatoes, roasted baby carrots, and house basil sauce.", "offers": { "@type": "Offer", "price": "32", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Porchetta", "description": "Slow-roasted pork belly and pancetta, rolled with sage and onion, with roasted baby carrots and red potatoes.", "offers": { "@type": "Offer", "price": "34", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Seafood Risotto", "description": "Carnaroli risotto with prawns and mixed seafood, cooked in house-made fish stock with tomato and aromatic herbs.", "offers": { "@type": "Offer", "price": "36", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Fusilli Pasta", "description": "Fusilli pasta with house tomato sauce, cherry tomatoes, and ricotta.", "offers": { "@type": "Offer", "price": "26", "priceCurrency": "USD" } }
-            ]
-          },
-          {
-            "@type": "MenuSection",
-            "name": "Dinner Desserts",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Tiramisu", "offers": { "@type": "Offer", "price": "10", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Cheesecake", "offers": { "@type": "Offer", "price": "10", "priceCurrency": "USD" } }
-            ]
-          },
-          {
-            "@type": "MenuSection",
-            "name": "Kids Menu",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Pancakes and Eggs", "offers": { "@type": "Offer", "price": "10", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Kids Burrito", "offers": { "@type": "Offer", "price": "10", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "The Urban Jr.", "offers": { "@type": "Offer", "price": "10", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Kids Quesadilla", "offers": { "@type": "Offer", "price": "10", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Chicken Nuggets and Fries", "offers": { "@type": "Offer", "price": "10", "priceCurrency": "USD" } }
-            ]
-          },
-          {
-            "@type": "MenuSection",
-            "name": "Coffee and Beverages",
-            "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Espresso", "offers": { "@type": "Offer", "price": "4", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Latte", "offers": { "@type": "Offer", "price": "6", "priceCurrency": "USD" } },
-              { "@type": "MenuItem", "name": "Honey Lavender Latte", "offers": { "@type": "Offer", "price": "7", "priceCurrency": "USD" } }
-            ]
+        {
+          "@type": "MenuItem",
+          "name": "Urban Guacamole Toast",
+          "description": "Grilled sourdough, smashed avocado, bacon, roasted corn-poblano relish, sun-dried tomato, basil, two farm fresh poached eggs, balsamic glaze, and microgreens.",
+          "offers": {
+            "@type": "Offer",
+            "price": "16",
+            "priceCurrency": "USD"
           }
-        ]
-      }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Garden Omelet",
+          "description": "Three farm fresh eggs, spinach, mushrooms, caramelized onion, mozzarella, basil pesto, crispy hashbrowns, and artisan toast.",
+          "offers": {
+            "@type": "Offer",
+            "price": "15",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Urban Benedict",
+          "description": "Toasted English muffin, bacon, two farm fresh poached eggs, lemon hollandaise, fried capers, and crispy hashbrowns.",
+          "offers": {
+            "@type": "Offer",
+            "price": "16",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Breakfast Sandwich",
+          "description": "Brioche bun, farm fresh scrambled eggs, mozzarella, choice of bacon, sausage, or ham, and crispy hashbrowns.",
+          "offers": {
+            "@type": "Offer",
+            "price": "13",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Breakfast Burrito",
+          "description": "Farm fresh scrambled eggs, chorizo, crispy tots, cheddar, pico de gallo, tomatillo salsa, cilantro crema, and mixed greens.",
+          "offers": {
+            "@type": "Offer",
+            "price": "14",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Flatiron Steak & Eggs",
+          "description": "Grilled flat-iron steak, two farm fresh eggs any style, crispy hashbrowns, artisan toast, and herb butter.",
+          "offers": {
+            "@type": "Offer",
+            "price": "18",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Sweet Brunch",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Greek Yogurt Parfait",
+          "description": "Greek yogurt, house granola, seasonal fruit, berry compote, honey, and candied pecans.",
+          "offers": {
+            "@type": "Offer",
+            "price": "13",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Buttermilk Pancakes",
+          "description": "Three buttermilk pancakes, whipped butter, maple syrup, and powdered sugar.",
+          "offers": {
+            "@type": "Offer",
+            "price": "15",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Banana Pecan Pancakes",
+          "description": "Buttermilk pancakes, bananas, candied pecans, whipped mascarpone, and maple butter.",
+          "offers": {
+            "@type": "Offer",
+            "price": "17",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Dulce Strawberry Pancakes",
+          "description": "Buttermilk pancakes, dulce de leche, fresh strawberries, vanilla mascarpone cream, and powdered sugar.",
+          "offers": {
+            "@type": "Offer",
+            "price": "17",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Berry Mascarpone French Toast",
+          "description": "Thick-cut brioche filled with vanilla mascarpone cream and seasonal berry compote, powdered sugar, and maple syrup.",
+          "offers": {
+            "@type": "Offer",
+            "price": "16",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Belgian Waffle",
+          "description": "Golden Belgian waffle, whipped butter, maple syrup, and powdered sugar.",
+          "offers": {
+            "@type": "Offer",
+            "price": "15",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Strawberry Crepes",
+          "description": "Tender crepes, vanilla mascarpone cream, fresh strawberries, berry compote, and powdered sugar.",
+          "offers": {
+            "@type": "Offer",
+            "price": "15",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Savory Brunch",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Savory Crepes",
+          "description": "Ham, farm fresh scrambled eggs, mozzarella, basil pesto, roasted peppers, and lemon hollandaise.",
+          "offers": {
+            "@type": "Offer",
+            "price": "17",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Skillets",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Ranchero Skillet",
+          "description": "Crispy tots, chorizo, ranchero sauce, roasted corn-poblano relish, mozzarella, two farm fresh sunny eggs, guacamole, fried jalapenos, and corn tortillas.",
+          "offers": {
+            "@type": "Offer",
+            "price": "17",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Mexican Skillet",
+          "description": "Black beans, crispy tots, mozzarella, choice of bacon, sausage, or ham, two farm fresh sunny eggs, and guacamole.",
+          "offers": {
+            "@type": "Offer",
+            "price": "17",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Sandwiches",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Pesto Chicken Sandwich",
+          "description": "Grilled chicken, basil pesto, mozzarella, tomato, arugula, garlic aioli, and grilled sourdough.",
+          "offers": {
+            "@type": "Offer",
+            "price": "16",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Italian Sandwich",
+          "description": "Salami, pepperoni, ham, grilled mozzarella, garlic aioli, confit tomatoes, and grilled white bread.",
+          "offers": {
+            "@type": "Offer",
+            "price": "15",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Pulled Pork Sandwich",
+          "description": "Slow-roasted pulled pork, smoked pineapple slaw, crispy onions, and a brioche bun.",
+          "offers": {
+            "@type": "Offer",
+            "price": "17",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "BLT",
+          "description": "Triple-decker white toast, bacon, lettuce, tomato, and garlic mayo.",
+          "offers": {
+            "@type": "Offer",
+            "price": "14",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Bacon Cheeseburger",
+          "description": "Prime Angus beef, bacon, cheddar, lettuce, tomato, mayonnaise, and a brioche bun.",
+          "offers": {
+            "@type": "Offer",
+            "price": "17",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Soup & Salads",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Soup of the Day",
+          "description": "Ask your server for today's soup."
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Burrata Salad",
+          "description": "Mixed greens, burrata, basil-pickled peaches, blistered cherry tomatoes, caramelized walnuts, and balsamic glaze.",
+          "offers": {
+            "@type": "Offer",
+            "price": "19",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Classic Caesar",
+          "description": "Romaine, parmesan, sourdough croutons, cracked pepper, and house Caesar dressing.",
+          "offers": {
+            "@type": "Offer",
+            "price": "13",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Kids Meals · $10",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Kids Basic",
+          "description": "One farm fresh egg, bacon or sausage, and toast.",
+          "offers": {
+            "@type": "Offer",
+            "price": "10",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Kids Pancakes",
+          "description": "Two pancakes and maple syrup.",
+          "offers": {
+            "@type": "Offer",
+            "price": "10",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Kids Quesadilla",
+          "description": "Cheddar, mozzarella, and fries.",
+          "offers": {
+            "@type": "Offer",
+            "price": "10",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Kids Chicken Tenders",
+          "description": "Tallow-fried chicken tenders and fries.",
+          "offers": {
+            "@type": "Offer",
+            "price": "10",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Kids Drinks",
+          "description": "Orange juice, apple juice, milk, or chocolate milk."
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Sides",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Bacon",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Sausage",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Ham",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chorizo",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Pulled Pork",
+          "offers": {
+            "@type": "Offer",
+            "price": "6",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Grilled Chicken",
+          "offers": {
+            "@type": "Offer",
+            "price": "6",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Steak Tips",
+          "offers": {
+            "@type": "Offer",
+            "price": "8",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Two Farm Fresh Eggs",
+          "offers": {
+            "@type": "Offer",
+            "price": "4",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Crispy Hashbrowns",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Tater Tots",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Tallow Fries",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Side Salad",
+          "offers": {
+            "@type": "Offer",
+            "price": "6",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Seasonal Fruit",
+          "offers": {
+            "@type": "Offer",
+            "price": "6",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Avocado",
+          "offers": {
+            "@type": "Offer",
+            "price": "4",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Pico de Gallo",
+          "offers": {
+            "@type": "Offer",
+            "price": "3",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Salsa",
+          "offers": {
+            "@type": "Offer",
+            "price": "3",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "White Toast",
+          "offers": {
+            "@type": "Offer",
+            "price": "3",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Sourdough Toast",
+          "offers": {
+            "@type": "Offer",
+            "price": "3",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "English Muffin",
+          "offers": {
+            "@type": "Offer",
+            "price": "3",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Gluten-Free Toast",
+          "offers": {
+            "@type": "Offer",
+            "price": "4",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Pastry",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Assorted Pastries",
+          "description": "Ask your server for today's selection.",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Beverages",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Orange Juice · 16 oz",
+          "offers": {
+            "@type": "Offer",
+            "price": "6",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Apple Juice · 16 oz",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Milk · 16 oz",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Coke Products",
+          "offers": {
+            "@type": "Offer",
+            "price": "4",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Mixed Juices",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Fresh Orange Juice"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Fruit of the Day + Orange"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Guava + Orange"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Sparkling Orange",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "House Signature",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "The Urban Legend",
+          "description": "White chocolate, salted caramel, and coconut breve topped with whipped cream and caramel drizzle.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Specialty Coffee",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Black & White Mocha",
+          "description": "White chocolate, milk chocolate, salted caramel, espresso, whole milk, whipped cream, and chocolate drizzle.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Caramel Macchiato",
+          "description": "Vanilla, French vanilla cream, espresso, whole milk, whipped cream, and caramel drizzle.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "White Chocolate Pumpkin Latte",
+          "description": "White chocolate, pumpkin, espresso, whole milk, whipped cream, and cinnamon.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Horchata Latte",
+          "description": "Brown sugar, vanilla, espresso, horchata, half-and-half, whipped cream, and cinnamon.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Vanilla Latte",
+          "description": "Vanilla, French vanilla cream, espresso, and whole milk.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Red Bull Mocktails",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Immodest Molly",
+          "description": "Blue raspberry and coconut with Red Bull.",
+          "offers": {
+            "@type": "Offer",
+            "price": "8",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Sunday Scandal",
+          "description": "Peach and vanilla with Red Bull.",
+          "offers": {
+            "@type": "Offer",
+            "price": "8",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "MomTok Meltdown",
+          "description": "Raspberry and coconut with Red Bull.",
+          "offers": {
+            "@type": "Offer",
+            "price": "8",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Mormosa",
+          "description": "Fresh-squeezed orange juice with Red Bull.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Chai & Matcha",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Salted Caramel Chai",
+          "description": "Salted caramel chai with whole milk and caramel drizzle.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "White Chocolate Chai",
+          "description": "White chocolate chai with whole milk and whipped cream.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Vanilla Lavender Matcha",
+          "description": "Matcha with vanilla, lavender, and whole milk.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Coconut Matcha",
+          "description": "Matcha with coconut and whole milk.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Matcha Latte",
+          "description": "Classic matcha with whole milk.",
+          "offers": {
+            "@type": "Offer",
+            "price": "7",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Drink Basics",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Drip Coffee",
+          "offers": {
+            "@type": "Offer",
+            "price": "4",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Espresso",
+          "offers": {
+            "@type": "Offer",
+            "price": "4",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Americano",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Latte / Cappuccino / Mocha",
+          "offers": {
+            "@type": "Offer",
+            "price": "6",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Hot Chocolate",
+          "offers": {
+            "@type": "Offer",
+            "price": "6",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Hot / Iced Tea",
+          "offers": {
+            "@type": "Offer",
+            "price": "5",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Small Plates",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Tuna Tartare",
+          "description": "Hand-chopped fresh tuna, capers, and extra virgin olive oil.",
+          "offers": {
+            "@type": "Offer",
+            "price": "22",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Roast Beef & Whipped Ricotta",
+          "description": "Thinly sliced top round roast beef, whipped ricotta, and house-pickled onions.",
+          "offers": {
+            "@type": "Offer",
+            "price": "18",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Burrata & Heirloom Tomatoes",
+          "description": "Silky burrata, heirloom and cherry tomatoes, fresh basil, and extra virgin olive oil.",
+          "offers": {
+            "@type": "Offer",
+            "price": "18",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Soup & Salads",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Soup of the Day",
+          "description": "Ask your server about today's house-made soup."
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Mixed Greens Salad",
+          "description": "Seasonal mixed greens with house vinaigrette.",
+          "offers": {
+            "@type": "Offer",
+            "price": "12",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Caesar Salad",
+          "description": "Romaine, parmesan, sourdough croutons, cracked pepper, and house Caesar dressing.",
+          "offers": {
+            "@type": "Offer",
+            "price": "13",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Burrata Salad",
+          "description": "Mixed greens, burrata, basil-pickled peaches, blistered cherry tomatoes, caramelized walnuts, and balsamic glaze.",
+          "offers": {
+            "@type": "Offer",
+            "price": "19",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Mains",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Prime Filet Mignon",
+          "description": "Prime beef tenderloin, creamy Yukon Gold potatoes, and roasted asparagus.",
+          "offers": {
+            "@type": "Offer",
+            "price": "54",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Braised Beef Short Rib",
+          "description": "Slow-braised beef short rib, natural jus, carrot-ginger purée, and sautéed broccoli.",
+          "offers": {
+            "@type": "Offer",
+            "price": "42",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Chicken Supreme",
+          "description": "Pan-roasted chicken breast, creamy Yukon Gold potatoes, roasted baby carrots, and house basil sauce.",
+          "offers": {
+            "@type": "Offer",
+            "price": "32",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Porchetta",
+          "description": "Slow-roasted pork belly and pancetta with sage and onion, roasted baby carrots, and red potatoes.",
+          "offers": {
+            "@type": "Offer",
+            "price": "34",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Seafood Risotto",
+          "description": "Carnaroli risotto with prawns and mixed seafood in house fish stock, tomato, and aromatic herbs.",
+          "offers": {
+            "@type": "Offer",
+            "price": "36",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Fusilli Pasta",
+          "description": "Fusilli with house tomato sauce, cherry tomatoes, and ricotta.",
+          "offers": {
+            "@type": "Offer",
+            "price": "26",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Desserts · $10 each",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Tiramisu",
+          "offers": {
+            "@type": "Offer",
+            "price": "10",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Cheesecake",
+          "offers": {
+            "@type": "Offer",
+            "price": "10",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+  ]
+}
     </script>
   </head>
   <body>
@@ -144,262 +1070,225 @@
           <p class="section-kicker">The Menu</p>
           <h1>made fresh, plated beautifully</h1>
           <p>
-            Every plate is prepared to order. Browse breakfast, skillets, brunch sandwiches, soups, salads,
-            sides, pastries, kids meals, coffee, tea, Coke products, and nightly dinner in Pleasant Grove, Utah.
+            Every plate is prepared to order. Browse the current brunch, drinks, kids, sides, and nightly dinner menus for Urban Kitchen in Pleasant Grove, Utah.
           </p>
         </div>
 
-        <div id="old-menu-mount" class="menu-shell reveal" aria-live="polite">
-          <p class="menu-updated">Loading the Urban Kitchen menu&hellip;</p>
-        </div>
-
-        <div class="menu-shell reveal typed-menu-archive" hidden aria-hidden="true">
-          <p class="menu-updated">Full menu &middot; descriptions, prices, and dietary notes</p>
+<!-- GENERATED_MENU_START: edit data/current-menu.json, then run node tools/render-website-menu.mjs -->
+        <div class="menu-shell reveal" data-menu-version="2026-10-17-current-printed">
+          <p class="menu-updated">Current brunch, dinner, and specialty drinks menus</p>
           <div class="menu-tabs" role="tablist" aria-label="Menu categories">
-            <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" data-menu-tab="shareables">
-              Shareables
-            </button>
-            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="breakfast">
+            <button class="menu-tab is-active" type="button" role="tab" aria-selected="true" data-menu-tab="breakfast">
               Breakfast
             </button>
             <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="sweet">
               Sweet Brunch
             </button>
             <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="savory">
-              Savory & Skillets
+              Savory &amp; Skillets
             </button>
-            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="lunch">
-              Lunch
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="sandwiches">
+              Sandwiches
             </button>
             <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="soups">
-              Soups & Salads
+              Soup &amp; Salads
             </button>
-            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="sides">
-              Sides & Kids
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="kids-sides">
+              Kids &amp; Sides
             </button>
             <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="drinks">
-              Drinks
+              Drinks &amp; Pastry
+            </button>
+            <button class="menu-tab" type="button" role="tab" aria-selected="false" data-menu-tab="dinner">
+              Dinner
             </button>
           </div>
-
           <div class="menu-panels">
-            <article class="menu-panel is-active" data-menu-panel="shareables" tabindex="0">
-              <div class="panel-head">
-                <h2>Shareables</h2>
-                <p>Start the table with something sweet, savory, or a little of both.</p>
-              </div>
-              <div class="menu-grid">
-                <div class="menu-item"><h4>Billion Dollar Bacon *</h4><p>Thick-cut bacon glazed with brown sugar, black pepper, maple, and chili flake.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Warm Finnish Bread Cheese *</h4><p>Leipajuusto, berry compote, seasonal fruit, and hot honey.</p><span>$15</span></div>
-                <div class="menu-item"><h4>Sweet Corn Tamale Cakes</h4><p>Sweet corn masa cakes, tomatillo salsa, cilantro crema, pico de gallo, avocado, and cotija.</p><span>$14</span></div>
-                <div class="menu-item"><h4>Street Market Corn Dip *</h4><p>Charred corn, poblano, cotija, chile-lime crema, cilantro, and tallow-cooked tortilla chips.</p><span>$13</span></div>
-                <div class="menu-item"><h4>Biscuit Board</h4><p>Warm house-made buttermilk biscuits, whipped honey butter, and seasonal jam.</p><span>$12</span></div>
-              </div>
-            </article>
-
-            <article class="menu-panel" data-menu-panel="breakfast" tabindex="0">
+            <article class="menu-panel is-active" data-menu-panel="breakfast" tabindex="0">
               <div class="panel-head"><h2>Breakfast</h2><p>Breakfast plates include crispy hashbrowns unless noted.</p></div>
-              <div class="menu-grid">
-                <div class="menu-item"><h4>The Basic *</h4><p>Two farm fresh eggs any style, crispy hashbrowns, choice of bacon, sausage, or ham, and artisan toast.</p><span>$14</span></div>
-                <div class="menu-item"><h4>Urban Guacamole Toast *</h4><p>Grilled sourdough, smashed avocado, bacon, roasted corn-poblano relish, sun-dried tomato, basil, two poached eggs, balsamic glaze, and microgreens.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Breakfast Sandwich</h4><p>Toasted English muffin, farm fresh egg, cheddar, bacon or sausage, chipotle sauce, and crispy hashbrowns.</p><span>$15</span></div>
-                <div class="menu-item"><h4>Urban Benedict *</h4><p>Toasted English muffin, bacon, two poached eggs, lemon hollandaise, fried capers, and crispy hashbrowns.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Garden Omelet *</h4><p>Three eggs, spinach, roasted peppers, caramelized onion, mozzarella, basil pesto, crispy hashbrowns, and artisan toast.</p><span>$16</span></div>
-                <div class="menu-item"><h4>Breakfast Burrito</h4><p>Scrambled eggs, chorizo, crispy tots, cheddar, pico de gallo, tomatillo salsa, cilantro crema, and mixed greens.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Flatiron Steak & Eggs *</h4><p>Grilled flat-iron steak, two eggs any style, crispy hashbrowns, artisan toast, and herb butter.</p><span>$23</span></div>
-                <div class="menu-item"><h4>Biscuits & Gravy</h4><p>House buttermilk biscuits, sausage country gravy, two eggs any style, and crispy hashbrowns.</p><span>$16</span></div>
-                <div class="menu-item"><h4>Chicken & Waffles *</h4><p>Golden Belgian waffle, crispy tallow-fried chicken, hot honey butter, and maple syrup.</p><span>$22</span></div>
-              </div>
+              <section class="menu-group"><div class="menu-grid">
+                <div class="menu-item"><h4>The Basic *</h4><p>Two farm fresh eggs any style, crispy hashbrowns, choice of bacon, sausage, or ham, and artisan toast.</p><p class="menu-item-options">Protein upgrade: chorizo +$2, pulled pork +$5, steak tips +$7.</p><span>$13</span></div>
+                <div class="menu-item"><h4>Urban Guacamole Toast *</h4><p>Grilled sourdough, smashed avocado, bacon, roasted corn-poblano relish, sun-dried tomato, basil, two farm fresh poached eggs, balsamic glaze, and microgreens.</p><p class="menu-item-options">Protein upgrade: chorizo +$2, pulled pork +$5, steak tips +$7.</p><span>$16</span></div>
+                <div class="menu-item"><h4>Garden Omelet *</h4><p>Three farm fresh eggs, spinach, mushrooms, caramelized onion, mozzarella, basil pesto, crispy hashbrowns, and artisan toast.</p><p class="menu-item-options">Add bacon, sausage, ham, or chorizo +$3; steak +$7.</p><span>$15</span></div>
+                <div class="menu-item"><h4>Urban Benedict *</h4><p>Toasted English muffin, bacon, two farm fresh poached eggs, lemon hollandaise, fried capers, and crispy hashbrowns.</p><p class="menu-item-options">Protein upgrade: chorizo +$2, pulled pork +$5, steak tips +$7.</p><span>$16</span></div>
+                <div class="menu-item"><h4>Breakfast Sandwich</h4><p>Brioche bun, farm fresh scrambled eggs, mozzarella, choice of bacon, sausage, or ham, and crispy hashbrowns.</p><span>$13</span></div>
+                <div class="menu-item"><h4>Breakfast Burrito</h4><p>Farm fresh scrambled eggs, chorizo, crispy tots, cheddar, pico de gallo, tomatillo salsa, cilantro crema, and mixed greens.</p><p class="menu-item-options">Add guacamole +$3, sub pulled pork +$5, or smother with green chile and cheese +$3.</p><span>$14</span></div>
+                <div class="menu-item"><h4>Flatiron Steak &amp; Eggs *</h4><p>Grilled flat-iron steak, two farm fresh eggs any style, crispy hashbrowns, artisan toast, and herb butter.</p><span>$18</span></div>
+              </div></section>
             </article>
-
             <article class="menu-panel" data-menu-panel="sweet" tabindex="0">
-              <div class="panel-head"><h2>Sweet Brunch</h2><p>Pancakes, French toast, waffles, and crepes made for slow mornings.</p></div>
-              <div class="menu-grid">
+              <div class="panel-head"><h2>Sweet Brunch</h2><p>Pancakes, French toast, waffles, and crepes for a slower morning.</p></div>
+              <section class="menu-group"><div class="menu-grid">
                 <div class="menu-item"><h4>Greek Yogurt Parfait *</h4><p>Greek yogurt, house granola, seasonal fruit, berry compote, honey, and candied pecans.</p><span>$13</span></div>
                 <div class="menu-item"><h4>Buttermilk Pancakes *</h4><p>Three buttermilk pancakes, whipped butter, maple syrup, and powdered sugar.</p><span>$15</span></div>
                 <div class="menu-item"><h4>Banana Pecan Pancakes *</h4><p>Buttermilk pancakes, bananas, candied pecans, whipped mascarpone, and maple butter.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Dulce Strawberry Pancakes *</h4><p>Buttermilk pancakes, dulce de leche, strawberries, vanilla mascarpone cream, and powdered sugar.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Brioche French Toast *</h4><p>Thick-cut brioche, vanilla-cinnamon custard, maple butter, whipped vanilla cream, and candied pecans.</p><span>$16</span></div>
-                <div class="menu-item"><h4>Mascarpone Berry Stuffed French Toast *</h4><p>Thick-cut brioche filled with vanilla mascarpone cream and seasonal berry compote, powdered sugar, and maple syrup.</p><span>$18</span></div>
-                <div class="menu-item"><h4>Berry Mascarpone Waffle *</h4><p>Golden Belgian waffle, vanilla mascarpone cream, seasonal berries, berry compote, and whipped cream.</p><span>$16</span></div>
-                <div class="menu-item"><h4>Dutch Baby Pancake *</h4><p>Oven-baked German pancake, powdered sugar, whipped butter, and maple syrup.</p><span>$15</span></div>
-                <div class="menu-item"><h4>Cannes Crepes *</h4><p>Tender crepes, vanilla mascarpone cream, fresh strawberries, berry compote, and powdered sugar.</p><span>$16</span></div>
-                <div class="menu-item"><h4>Marseille Crepes *</h4><p>Tender crepes, Nutella, banana, fresh strawberries, vanilla mascarpone cream, and powdered sugar.</p><span>$15</span></div>
-                <div class="menu-item"><h4>Mandarin Crepes *</h4><p>Tender crepes, mandarin oranges, powdered sugar, and warm mandarin citrus syrup.</p><span>$17</span></div>
-              </div>
+                <div class="menu-item"><h4>Dulce Strawberry Pancakes *</h4><p>Buttermilk pancakes, dulce de leche, fresh strawberries, vanilla mascarpone cream, and powdered sugar.</p><span>$17</span></div>
+                <div class="menu-item"><h4>Berry Mascarpone French Toast *</h4><p>Thick-cut brioche filled with vanilla mascarpone cream and seasonal berry compote, powdered sugar, and maple syrup.</p><p class="menu-item-options">Add bacon or sausage +$3; two eggs +$3.</p><span>$16</span></div>
+                <div class="menu-item"><h4>Belgian Waffle *</h4><p>Golden Belgian waffle, whipped butter, maple syrup, and powdered sugar.</p><p class="menu-item-options">Add berries and vanilla mascarpone +$4; bacon or sausage +$3.</p><span>$15</span></div>
+                <div class="menu-item"><h4>Strawberry Crepes *</h4><p>Tender crepes, vanilla mascarpone cream, fresh strawberries, berry compote, and powdered sugar.</p><p class="menu-item-options">Side of Nutella +$2.</p><span>$15</span></div>
+              </div></section>
             </article>
-
             <article class="menu-panel" data-menu-panel="savory" tabindex="0">
-              <div class="panel-head"><h2>Savory Brunch</h2><p>Crepes and skillets layered with bold, house-made flavor.</p></div>
-              <div class="menu-grid">
-                <div class="menu-item"><h4>Urban Savory Crepes *</h4><p>Ham, scrambled eggs, mozzarella, basil pesto, roasted peppers, and lemon hollandaise.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Sonora Chorizo Crepes *</h4><p>Chorizo, scrambled eggs, cheddar, roasted corn-poblano relish, tomatillo salsa, and cilantro crema.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Florence Alfredo Crepes *</h4><p>Grilled chicken, parmesan alfredo, mozzarella, roasted mushrooms, and herbs.</p><span>$18</span></div>
-                <div class="menu-item"><h4>Ranchero Skillet *</h4><p>Crispy tots, chorizo, ranchero sauce, roasted corn-poblano relish, mozzarella, two sunny eggs, guacamole, fried jalapenos, and corn tortillas.</p><span>$18</span></div>
-                <div class="menu-item"><h4>Gravy Skillet</h4><p>Crispy hashbrowns, sausage, caramelized onions, cheddar, two sunny eggs, house country gravy, and scallions.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Chilaquiles *</h4><p>Crispy tortilla chips, salsa verde, chorizo, two sunny eggs, cotija, avocado, and cilantro crema.</p><span>$18</span></div>
-              </div>
+              <div class="panel-head"><h2>Savory Brunch &amp; Skillets</h2><p>Savory brunch plates layered with bold, house-made flavor.</p></div>
+              <section class="menu-group"><h4 class="menu-group-title">Savory Brunch</h4><div class="menu-grid">
+                <div class="menu-item"><h4>Savory Crepes *</h4><p>Ham, farm fresh scrambled eggs, mozzarella, basil pesto, roasted peppers, and lemon hollandaise.</p><span>$17</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Skillets</h4><div class="menu-grid">
+                <div class="menu-item"><h4>Ranchero Skillet *</h4><p>Crispy tots, chorizo, ranchero sauce, roasted corn-poblano relish, mozzarella, two farm fresh sunny eggs, guacamole, fried jalapenos, and corn tortillas.</p><p class="menu-item-options">Protein upgrade: chorizo +$2, pulled pork +$5, steak tips +$7.</p><span>$17</span></div>
+                <div class="menu-item"><h4>Mexican Skillet *</h4><p>Black beans, crispy tots, mozzarella, choice of bacon, sausage, or ham, two farm fresh sunny eggs, and guacamole.</p><p class="menu-item-options">Protein upgrade: chorizo +$2, pulled pork +$5, steak tips +$7.</p><span>$17</span></div>
+              </div></section>
             </article>
-
-            <article class="menu-panel" data-menu-panel="lunch" tabindex="0">
-              <div class="panel-head"><h2>Sandwiches & Tacos</h2><p>Sandwiches include seasoned tallow fries. Tacos include guacamole and pico de gallo.</p></div>
-              <div class="menu-grid">
-                <div class="menu-item"><h4>Pesto Chicken Sandwich *</h4><p>Grilled chicken, basil pesto, mozzarella, tomato, arugula, garlic aioli, and grilled sourdough.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Pulled Pork Sandwich *</h4><p>Slow-roasted pulled pork, smoked pineapple slaw, crispy onions, and a brioche bun.</p><span>$18</span></div>
-                <div class="menu-item"><h4>Million Dollar Bacon Burger *</h4><p>Prime Angus beef, million dollar bacon, sharp cheddar, caramelized onions, lettuce, tomato, chipotle sauce, and a brioche bun.</p><span>$22</span></div>
-                <div class="menu-item"><h4>Steak Tacos *</h4><p>Grilled steak, corn tortillas, roasted corn-poblano relish, cotija, cilantro, and tomatillo salsa.</p><span>$19</span></div>
-                <div class="menu-item"><h4>Chicken Tacos *</h4><p>Tallow-fried chicken, cabbage slaw, avocado crema, cotija, cilantro, and corn tortillas.</p><span>$18</span></div>
-                <div class="menu-item"><h4>Baja Fish Tacos</h4><p>Tallow-fried fish, smoked pineapple slaw, avocado crema, cotija, cilantro, and corn tortillas.</p><span>$19</span></div>
-              </div>
+            <article class="menu-panel" data-menu-panel="sandwiches" tabindex="0">
+              <div class="panel-head"><h2>Sandwiches</h2><p>Served with tallow-cooked seasoned fries.</p></div>
+              <section class="menu-group"><div class="menu-grid">
+                <div class="menu-item"><h4>Pesto Chicken Sandwich *</h4><p>Grilled chicken, basil pesto, mozzarella, tomato, arugula, garlic aioli, and grilled sourdough.</p><span>$16</span></div>
+                <div class="menu-item"><h4>Italian Sandwich</h4><p>Salami, pepperoni, ham, grilled mozzarella, garlic aioli, confit tomatoes, and grilled white bread.</p><span>$15</span></div>
+                <div class="menu-item"><h4>Pulled Pork Sandwich *</h4><p>Slow-roasted pulled pork, smoked pineapple slaw, crispy onions, and a brioche bun.</p><span>$17</span></div>
+                <div class="menu-item"><h4>BLT</h4><p>Triple-decker white toast, bacon, lettuce, tomato, and garlic mayo.</p><span>$14</span></div>
+                <div class="menu-item"><h4>Bacon Cheeseburger *</h4><p>Prime Angus beef, bacon, cheddar, lettuce, tomato, mayonnaise, and a brioche bun.</p><span>$17</span></div>
+              </div></section>
             </article>
-
             <article class="menu-panel" data-menu-panel="soups" tabindex="0">
-              <div class="panel-head"><h2>Soups & Salads</h2><p>Fresh lunch plates with house-made details.</p></div>
-              <div class="menu-grid">
-                <div class="menu-item"><h4>Broccoli Cheddar Soup</h4><p>Broccoli, sharp cheddar, cream, roasted garlic, and sourdough croutons.</p><span>$9 / $13</span></div>
-                <div class="menu-item"><h4>Chicken Tortilla Soup *</h4><p>Chicken, roasted tomato-chile broth, black beans, corn, avocado, cotija, and tallow-cooked tortilla strips.</p><span>$9 / $13</span></div>
-                <div class="menu-item"><h4>Burrata Salad *</h4><p>Mixed greens, burrata, basil-pickled peaches, blistered cherry tomatoes, caramelized walnuts, and balsamic glaze.</p><span>$19</span></div>
-                <div class="menu-item"><h4>Mandarin Salad *</h4><p>Mixed greens, mandarin oranges, avocado, candied pecans, goat cheese, and citrus vinaigrette.</p><span>$17</span></div>
-                <div class="menu-item"><h4>Classic Caesar *</h4><p>Romaine, parmesan, sourdough croutons, cracked pepper, and house Caesar dressing.</p><span>$13</span></div>
-              </div>
+              <div class="panel-head"><h2>Soup &amp; Salads</h2><p>House-made soup and fresh salads with optional proteins.</p></div>
+              <section class="menu-group"><div class="menu-grid">
+                <div class="menu-item"><h4>Soup of the Day</h4><p>Ask your server for today&#39;s soup.</p><span>$9 / $13</span></div>
+                <div class="menu-item"><h4>Burrata Salad *</h4><p>Mixed greens, burrata, basil-pickled peaches, blistered cherry tomatoes, caramelized walnuts, and balsamic glaze.</p><p class="menu-item-options">Add grilled chicken +$5, crispy chicken +$6, or steak +$7.</p><span>$19</span></div>
+                <div class="menu-item"><h4>Classic Caesar *</h4><p>Romaine, parmesan, sourdough croutons, cracked pepper, and house Caesar dressing.</p><p class="menu-item-options">Add grilled chicken +$5, crispy chicken +$6, or steak +$7.</p><span>$13</span></div>
+              </div></section>
             </article>
-
-            <article class="menu-panel" data-menu-panel="sides" tabindex="0">
-              <div class="panel-head"><h2>Sides & Kids</h2><p>Kids meals are for guests 12 and under.</p></div>
-              <div class="menu-grid sides-grid">
-                <div class="menu-item"><h4>Bacon</h4><span>$5</span></div><div class="menu-item"><h4>Sausage</h4><span>$5</span></div>
-                <div class="menu-item"><h4>Ham</h4><span>$5</span></div><div class="menu-item"><h4>Chorizo</h4><span>$5</span></div>
-                <div class="menu-item"><h4>Pulled Pork</h4><span>$6</span></div><div class="menu-item"><h4>Grilled Chicken</h4><span>$7</span></div>
-                <div class="menu-item"><h4>Steak</h4><span>$9</span></div><div class="menu-item"><h4>Two Farm Fresh Eggs</h4><span>$4</span></div>
-                <div class="menu-item"><h4>Crispy Hashbrowns</h4><span>$5</span></div><div class="menu-item"><h4>Tater Tots</h4><span>$5</span></div>
-                <div class="menu-item"><h4>Tallow Fries</h4><span>$5</span></div><div class="menu-item"><h4>Side Salad</h4><span>$6</span></div>
-                <div class="menu-item"><h4>Seasonal Fruit</h4><span>$5</span></div><div class="menu-item"><h4>Avocado</h4><span>$4</span></div>
-                <div class="menu-item"><h4>Kids Basic *</h4><p>One egg, bacon or sausage, and toast.</p><span>$8</span></div>
-                <div class="menu-item"><h4>Kids Pancakes</h4><p>Two pancakes and maple syrup.</p><span>$8</span></div>
-                <div class="menu-item"><h4>Kids Mac & Cheese</h4><p>Creamy macaroni and cheese.</p><span>$8</span></div>
-                <div class="menu-item"><h4>Kids Quesadilla</h4><p>Cheddar, mozzarella, and fries. Add chicken or pork +$2.</p><span>$8</span></div>
-                <div class="menu-item"><h4>Kids Chicken Tenders</h4><p>Tallow-fried chicken tenders and fries.</p><span>$8</span></div>
-              </div>
+            <article class="menu-panel" data-menu-panel="kids-sides" tabindex="0">
+              <div class="panel-head"><h2>Kids Meals &amp; Sides</h2><p>Kids meals are for guests 12 and under.</p></div>
+              <section class="menu-group"><h4 class="menu-group-title">Kids Meals · $10</h4><div class="menu-grid">
+                <div class="menu-item"><h4>Kids Basic *</h4><p>One farm fresh egg, bacon or sausage, and toast.</p><span>$10</span></div>
+                <div class="menu-item"><h4>Kids Pancakes *</h4><p>Two pancakes and maple syrup.</p><span>$10</span></div>
+                <div class="menu-item"><h4>Kids Quesadilla</h4><p>Cheddar, mozzarella, and fries.</p><p class="menu-item-options">Add chicken or pork +$2.</p><span>$10</span></div>
+                <div class="menu-item"><h4>Kids Chicken Tenders *</h4><p>Tallow-fried chicken tenders and fries.</p><span>$10</span></div>
+                <div class="menu-item"><h4>Kids Drinks</h4><p>Orange juice, apple juice, milk, or chocolate milk.</p><span>$3 · Soda $2</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Sides</h4><div class="menu-grid sides-grid">
+                <div class="menu-item"><h4>Bacon</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Sausage</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Ham</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Chorizo</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Pulled Pork</h4><span>$6</span></div>
+                <div class="menu-item"><h4>Grilled Chicken</h4><span>$6</span></div>
+                <div class="menu-item"><h4>Steak Tips</h4><span>$8</span></div>
+                <div class="menu-item"><h4>Two Farm Fresh Eggs</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Crispy Hashbrowns</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Tater Tots</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Tallow Fries</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Side Salad</h4><span>$6</span></div>
+                <div class="menu-item"><h4>Seasonal Fruit</h4><span>$6</span></div>
+                <div class="menu-item"><h4>Avocado</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Pico de Gallo</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Salsa</h4><span>$3</span></div>
+                <div class="menu-item"><h4>White Toast</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Sourdough Toast</h4><span>$3</span></div>
+                <div class="menu-item"><h4>English Muffin</h4><span>$3</span></div>
+                <div class="menu-item"><h4>Gluten-Free Toast</h4><span>$4</span></div>
+              </div></section>
             </article>
-
             <article class="menu-panel" data-menu-panel="drinks" tabindex="0">
-              <div class="panel-head"><h2>Drinks</h2><p>Coffee, fresh-squeezed juice, specialty drinks, mocktails, and more.</p></div>
-              <div class="drink-columns">
-                <div>
-                  <h4>Beverages</h4>
-                  <div class="menu-item"><h4>Fresh-Squeezed OJ</h4><p>4oz $4 &middot; 8oz $7 &middot; 12oz $10</p><span>from $4</span></div>
-                  <div class="menu-item"><h4>32oz OJ Carafe</h4><span>$28</span></div>
-                  <div class="menu-item"><h4>Orange or Apple Juice</h4><span>$5</span></div>
-                  <div class="menu-item"><h4>Dirty Sodas</h4><p>Dirty Dr Pepper, Dirty Diet Coke, Dirty Coke, Raspberry Dream Sprite, or Tropical Sprite.</p><span>$6</span></div>
-                  <div class="menu-item"><h4>Mocktails</h4><p>Mormosa $8 &middot; Virgin Bloody Mary $9 &middot; Mandarin Mule $9 &middot; Lavender Lemon Fizz $9 &middot; Berry Basil Smash $10</p><span>from $8</span></div>
-                </div>
-                <div>
-                  <h4>Coffee</h4>
-                  <div class="menu-grid drink-grid">
-                    <div class="menu-item"><h4>Espresso</h4><span>$4</span></div>
-                    <div class="menu-item"><h4>Americano</h4><span>$5</span></div>
-                    <div class="menu-item"><h4>Latte / Cappuccino / Mocha</h4><span>$6</span></div>
-                    <div class="menu-item"><h4>Brownstone Latte</h4><span>$7</span></div>
-                    <div class="menu-item"><h4>Honey Lavender Latte</h4><span>$7</span></div>
-                    <div class="menu-item"><h4>Hot Chocolate</h4><span>$6</span></div>
-                    <div class="menu-item"><h4>Mexican Hot Chocolate</h4><span>$7</span></div>
-                    <div class="menu-item"><h4>Brown Sugar Chai</h4><span>$7</span></div>
-                    <div class="menu-item"><h4>Metro Matcha</h4><span>$7</span></div>
-                    <div class="menu-item"><h4>Hot / Iced Tea</h4><span>$5</span></div>
-                  </div>
-                </div>
-              </div>
+              <div class="panel-head"><h2>Drinks, Coffee &amp; Pastry</h2><p>Fresh juice, seasonal specialty drinks, coffee, hot drinks, and today&#39;s pastry selection.</p></div>
+              <section class="menu-group"><h4 class="menu-group-title">Pastry</h4><div class="menu-grid">
+                <div class="menu-item"><h4>Assorted Pastries</h4><p>Ask your server for today&#39;s selection.</p><span>$5</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Beverages</h4><div class="menu-grid sides-grid">
+                <div class="menu-item"><h4>Orange Juice · 16 oz</h4><span>$6</span></div>
+                <div class="menu-item"><h4>Apple Juice · 16 oz</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Milk · 16 oz</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Coke Products</h4><p class="menu-item-options">Make it dirty +$2.</p><span>$4</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Mixed Juices</h4><p class="micro-note menu-group-note">Made with fresh-squeezed orange juice. Juice prices are shown for 6 oz, 12 oz, and 16 oz.</p><div class="menu-grid">
+                <div class="menu-item"><h4>Fresh Orange Juice</h4><span>$5 / $8 / $11</span></div>
+                <div class="menu-item"><h4>Fruit of the Day + Orange</h4><span>$6 / $9 / $12</span></div>
+                <div class="menu-item"><h4>Guava + Orange</h4><span>$6 / $9 / $12</span></div>
+                <div class="menu-item"><h4>Sparkling Orange</h4><span>$7</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">House Signature</h4><p class="micro-note menu-group-note">Temporary seasonal menu. Start here.</p><div class="menu-grid">
+                <div class="menu-item"><h4>The Urban Legend</h4><p>White chocolate, salted caramel, and coconut breve topped with whipped cream and caramel drizzle.</p><span>$7</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Specialty Coffee</h4><p class="micro-note menu-group-note">Espresso with main-character energy.</p><div class="menu-grid">
+                <div class="menu-item"><h4>Black &amp; White Mocha</h4><p>White chocolate, milk chocolate, salted caramel, espresso, whole milk, whipped cream, and chocolate drizzle.</p><span>$7</span></div>
+                <div class="menu-item"><h4>Caramel Macchiato</h4><p>Vanilla, French vanilla cream, espresso, whole milk, whipped cream, and caramel drizzle.</p><span>$7</span></div>
+                <div class="menu-item"><h4>White Chocolate Pumpkin Latte</h4><p>White chocolate, pumpkin, espresso, whole milk, whipped cream, and cinnamon.</p><span>$7</span></div>
+                <div class="menu-item"><h4>Horchata Latte</h4><p>Brown sugar, vanilla, espresso, horchata, half-and-half, whipped cream, and cinnamon.</p><span>$7</span></div>
+                <div class="menu-item"><h4>Vanilla Latte</h4><p>Vanilla, French vanilla cream, espresso, and whole milk.</p><span>$7</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Red Bull Mocktails</h4><p class="micro-note menu-group-note">Zero proof. Maximum drama.</p><div class="menu-grid">
+                <div class="menu-item"><h4>Immodest Molly</h4><p>Blue raspberry and coconut with Red Bull.</p><p class="menu-item-options">Make it dirty with French vanilla cream.</p><span>$8</span></div>
+                <div class="menu-item"><h4>Sunday Scandal</h4><p>Peach and vanilla with Red Bull.</p><p class="menu-item-options">Make it dirty with French vanilla cream.</p><span>$8</span></div>
+                <div class="menu-item"><h4>MomTok Meltdown</h4><p>Raspberry and coconut with Red Bull.</p><p class="menu-item-options">Make it dirty with French vanilla cream.</p><span>$8</span></div>
+                <div class="menu-item"><h4>Mormosa</h4><p>Fresh-squeezed orange juice with Red Bull.</p><span>$7</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Chai &amp; Matcha</h4><p class="micro-note menu-group-note">Hot or iced - use your agency.</p><div class="menu-grid">
+                <div class="menu-item"><h4>Salted Caramel Chai</h4><p>Salted caramel chai with whole milk and caramel drizzle.</p><p class="menu-item-options">Add a double shot to make it dirty.</p><span>$7</span></div>
+                <div class="menu-item"><h4>White Chocolate Chai</h4><p>White chocolate chai with whole milk and whipped cream.</p><p class="menu-item-options">Add a double shot to make it dirty.</p><span>$7</span></div>
+                <div class="menu-item"><h4>Vanilla Lavender Matcha</h4><p>Matcha with vanilla, lavender, and whole milk.</p><p class="menu-item-options">Add a double shot to make it dirty.</p><span>$7</span></div>
+                <div class="menu-item"><h4>Coconut Matcha</h4><p>Matcha with coconut and whole milk.</p><p class="menu-item-options">Add a double shot to make it dirty.</p><span>$7</span></div>
+                <div class="menu-item"><h4>Matcha Latte</h4><p>Classic matcha with whole milk.</p><p class="menu-item-options">Add a double shot to make it dirty.</p><span>$7</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Drink Basics</h4><p class="micro-note menu-group-note">Chai or matcha: two shots +$2. Energy: add French vanilla cream. Ask about milk alternatives.</p><div class="menu-grid sides-grid">
+                <div class="menu-item"><h4>Drip Coffee</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Espresso</h4><span>$4</span></div>
+                <div class="menu-item"><h4>Americano</h4><span>$5</span></div>
+                <div class="menu-item"><h4>Latte / Cappuccino / Mocha</h4><span>$6</span></div>
+                <div class="menu-item"><h4>Hot Chocolate</h4><span>$6</span></div>
+                <div class="menu-item"><h4>Hot / Iced Tea</h4><span>$5</span></div>
+              </div></section>
+            </article>
+            <article class="menu-panel" data-menu-panel="dinner" tabindex="0">
+              <div class="panel-head"><h2>Dinner</h2><p>Croatian and Mediterranean inspired. Served nightly from 5:00 PM to 9:00 PM.</p></div>
+              <section class="menu-group"><h4 class="menu-group-title">Small Plates</h4><div class="menu-grid">
+                <div class="menu-item"><h4>Tuna Tartare</h4><p>Hand-chopped fresh tuna, capers, and extra virgin olive oil.</p><span>$22</span></div>
+                <div class="menu-item"><h4>Roast Beef &amp; Whipped Ricotta</h4><p>Thinly sliced top round roast beef, whipped ricotta, and house-pickled onions.</p><span>$18</span></div>
+                <div class="menu-item"><h4>Burrata &amp; Heirloom Tomatoes</h4><p>Silky burrata, heirloom and cherry tomatoes, fresh basil, and extra virgin olive oil.</p><span>$18</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Soup &amp; Salads</h4><div class="menu-grid">
+                <div class="menu-item"><h4>Soup of the Day</h4><p>Ask your server about today&#39;s house-made soup.</p><span>$9 / $13</span></div>
+                <div class="menu-item"><h4>Mixed Greens Salad</h4><p>Seasonal mixed greens with house vinaigrette.</p><p class="menu-item-options">Add chicken +$6.</p><span>$12</span></div>
+                <div class="menu-item"><h4>Caesar Salad</h4><p>Romaine, parmesan, sourdough croutons, cracked pepper, and house Caesar dressing.</p><p class="menu-item-options">Add chicken +$6.</p><span>$13</span></div>
+                <div class="menu-item"><h4>Burrata Salad</h4><p>Mixed greens, burrata, basil-pickled peaches, blistered cherry tomatoes, caramelized walnuts, and balsamic glaze.</p><p class="menu-item-options">Add chicken +$6.</p><span>$19</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Mains</h4><div class="menu-grid">
+                <div class="menu-item"><h4>Prime Filet Mignon</h4><p>Prime beef tenderloin, creamy Yukon Gold potatoes, and roasted asparagus.</p><span>$54</span></div>
+                <div class="menu-item"><h4>Braised Beef Short Rib</h4><p>Slow-braised beef short rib, natural jus, carrot-ginger purée, and sautéed broccoli.</p><span>$42</span></div>
+                <div class="menu-item"><h4>Chicken Supreme</h4><p>Pan-roasted chicken breast, creamy Yukon Gold potatoes, roasted baby carrots, and house basil sauce.</p><span>$32</span></div>
+                <div class="menu-item"><h4>Porchetta</h4><p>Slow-roasted pork belly and pancetta with sage and onion, roasted baby carrots, and red potatoes.</p><span>$34</span></div>
+                <div class="menu-item"><h4>Seafood Risotto</h4><p>Carnaroli risotto with prawns and mixed seafood in house fish stock, tomato, and aromatic herbs.</p><span>$36</span></div>
+                <div class="menu-item"><h4>Fusilli Pasta</h4><p>Fusilli with house tomato sauce, cherry tomatoes, and ricotta.</p><p class="menu-item-options">Add chicken +$6.</p><span>$26</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">Desserts · $10 each</h4><div class="menu-grid sides-grid">
+                <div class="menu-item"><h4>Tiramisu</h4><span>$10</span></div>
+                <div class="menu-item"><h4>Cheesecake</h4><span>$10</span></div>
+              </div></section>
+              <section class="menu-group"><h4 class="menu-group-title">House Focaccia</h4><p class="micro-note menu-group-note">Fresh rosemary focaccia is complimentary to the table while you wait.</p></section>
             </article>
           </div>
           <div class="menu-notes">
-            <p><strong>* Gluten-friendly by request.</strong> Substitutions may include an additional charge and are prepared in a kitchen that uses wheat.</p>
+            <p>* Can be made gluten-friendly by request. Substitutions may include an additional charge and are prepared in a kitchen that uses wheat.</p>
             <p>Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.</p>
-            <p>Menu and availability are subject to change.</p>
+            <p>Please tell your server about food allergies or dietary requirements. Menu and availability are subject to change.</p>
           </div>
         </div>
-        <script>
-          fetch('/?menu=old-v2', { cache: 'no-store' })
-            .then((response) => response.text())
-            .then((html) => {
-              const page = new DOMParser().parseFromString(html, 'text/html');
-              const oldMenu = page.querySelector('.home-menu-section .menu-shell');
-              const mount = document.getElementById('old-menu-mount');
-              if (!oldMenu || !mount) throw new Error('Old menu markup was not found.');
-              mount.innerHTML = oldMenu.innerHTML;
-              const activateMenuTab = (tab) => {
-                const category = tab.dataset.menuTab;
-                mount.querySelectorAll('[data-menu-tab]').forEach((item) => {
-                  const active = item === tab;
-                  item.classList.toggle('is-active', active);
-                  item.setAttribute('aria-selected', String(active));
-                });
-                mount.querySelectorAll('[data-menu-panel]').forEach((panel) => {
-                  panel.classList.toggle('is-active', panel.dataset.menuPanel === category);
-                });
-              };
-              mount.addEventListener('click', (event) => {
-                const tab = event.target.closest('[data-menu-tab]');
-                if (!tab) return;
-                activateMenuTab(tab);
-              });
-              const initialCategory = window.location.hash.replace('#', '');
-              const initialTab = initialCategory
-                ? [...mount.querySelectorAll('[data-menu-tab]')].find((tab) => tab.dataset.menuTab === initialCategory)
-                : null;
-              if (initialTab) activateMenuTab(initialTab);
-            })
-            .catch(() => {
-              const mount = document.getElementById('old-menu-mount');
-              if (mount) mount.innerHTML = '<p class="menu-updated">Please call Urban Kitchen for today’s menu.</p>';
-            });
-        </script>
+        <!-- GENERATED_MENU_END -->
+
       </section>
 
       <section class="menu-seo-section" aria-label="Urban Kitchen brunch and dinner menu highlights">
         <div class="menu-seo-intro">
           <p class="section-kicker">Brunch and Dinner in Pleasant Grove</p>
-          <h2>breakfast, lunch, coffee, and nightly dinner</h2>
-          <p>
-            Urban Kitchen serves brunch in Pleasant Grove with a menu built for slow mornings, quick lunches,
-            coffee dates, business meetings, and family gatherings. Plan a birthday brunch, baby shower, wedding
-            celebration, or dinner with friends around French toast, benedicts, skillets, sandwiches, small plates,
-            prime filet mignon, braised beef short ribs, chicken, seafood, pasta, pastries, and espresso drinks.
-          </p>
+          <h2>brunch by day, dinner every night</h2>
+          <p>Start with breakfast, sweet or savory brunch, sandwiches, salads, fresh juice, coffee, and kids meals. Return for Croatian and Mediterranean inspired small plates, steaks, chicken, pork, seafood, pasta, and desserts at dinner.</p>
         </div>
-
         <div class="menu-seo-grid">
-          <article>
-            <h3>Breakfast favorites</h3>
-            <p>
-              Start with The Urban, Urban Guacamole Toast, French Toast, Strawberry Crepes, an omelette,
-              Urban Benedict, or a Breakfast Burrito. Add espresso, cappuccino, coffee, or a fresh pastry.
-            </p>
-          </article>
-          <article>
-            <h3>Skillets and savory brunch</h3>
-            <p>
-              Our Ranchero Skillet, Mexican Skillet, and Urban Skillet are warm, savory brunch plates for
-              guests looking for eggs, potatoes, bold flavor, and a filling breakfast near American Fork and Lindon.
-            </p>
-          </article>
-          <article>
-            <h3>Lunch in Pleasant Grove</h3>
-            <p>
-              For lunch, choose brunch sandwiches served with fries, including the Pesto Chicken Sandwich,
-              Italian Sandwich, Pulled Pork Sandwich, BLT, Sirloin Tips & Eggs, and Urban Bacon Cheese Burger.
-            </p>
-          </article>
-          <article>
-            <h3>dinner every night</h3>
-            <p>
-              Dinner features small plates, prime filet mignon, braised beef short ribs, chicken supreme,
-              porchetta, seafood risotto, fusilli pasta, tiramisu, cheesecake, and complimentary house focaccia.
-            </p>
-          </article>
+          <article><h3>Breakfast favorites</h3><p>The Basic, Urban Benedict, Breakfast Burrito, Flatiron Steak &amp; Eggs, Berry Mascarpone French Toast, and skillets anchor the brunch menu.</p></article>
+          <article><h3>Fresh juice and specialty drinks</h3><p>Choose fresh-squeezed orange juice, rotating fruit-and-orange blends, seasonal specialty coffee, zero-proof Red Bull mocktails, chai, matcha, tea, and hot chocolate.</p></article>
+          <article><h3>Lunch and lighter plates</h3><p>Sandwiches, soup, Burrata Salad, and Classic Caesar cover quick lunches and slower midday gatherings.</p></article>
+          <article><h3>Dinner every night</h3><p>Dinner features tuna tartare, salads, prime filet mignon, braised short rib, chicken, porchetta, seafood risotto, pasta, and desserts.</p></article>
         </div>
-
         <div class="menu-seo-links">
-          <a class="button button-dark" href="location.html">Hours & Directions</a>
+          <a class="button button-dark" href="location.html">Hours &amp; Directions</a>
           <a class="button button-outline-dark" href="reservations.html">Reserve a Table</a>
         </div>
       </section>

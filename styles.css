@@ -703,6 +703,23 @@ h1 em {
   text-transform: uppercase;
 }
 
+.menu-group + .menu-group {
+  margin-top: 54px;
+}
+
+.menu-group-title {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.menu-group-note {
+  margin: -4px 0 10px;
+}
+
 .menu-grid,
 .drink-grid,
 .sides-grid {
@@ -755,6 +772,12 @@ h1 em {
   font-size: 0.9rem;
   font-style: normal;
   line-height: 1.55;
+}
+
+.menu-item .menu-item-options {
+  margin-top: -14px;
+  color: rgba(250, 247, 240, 0.64);
+  font-size: 0.82rem;
 }
 
 .menu-item span {
