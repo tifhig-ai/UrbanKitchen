@@ -154,6 +154,25 @@ if (reservationForm) {
       weekend: ["17:00", "20:30"],
     },
   };
+  const holidayClosures = {
+    "2026-11-26": {
+      services: new Set(["brunch", "dinner"]),
+      message: "Urban Kitchen is closed on Thanksgiving.",
+    },
+    "2026-12-24": {
+      services: new Set(["dinner"]),
+      message: "Christmas Eve dinner is closed. Brunch is available from 8:00 AM-2:00 PM.",
+    },
+    "2026-12-25": {
+      services: new Set(["brunch", "dinner"]),
+      message: "Urban Kitchen is closed on Christmas Day.",
+    },
+  };
+
+  const getHolidayClosure = (service, date) => {
+    const closure = holidayClosures[date];
+    return closure?.services.has(service) ? closure : null;
+  };
 
   const parseDateParts = (value) => {
     const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
@@ -214,6 +233,13 @@ if (reservationForm) {
       return;
     }
 
+    const holidayClosure = getHolidayClosure(service, dateValue);
+    if (holidayClosure) {
+      timeInput.disabled = true;
+      if (timeHelp) timeHelp.textContent = holidayClosure.message;
+      return;
+    }
+
     if (service === "brunch" && dateValue === getLocalDateString()) {
       timeInput.disabled = true;
       if (timeHelp) timeHelp.textContent = "Brunch reservations are not available for same-day requests right now. Please choose a future date.";
@@ -268,6 +294,11 @@ if (reservationForm) {
     const requestedDateTime = getReservationDateTime(payload.date, payload.time);
 
     try {
+      const holidayClosure = getHolidayClosure(payload.service, payload.date);
+      if (holidayClosure) {
+        throw new Error(holidayClosure.message);
+      }
+
       if (payload.service === "brunch" && payload.date === getLocalDateString()) {
         throw new Error("Brunch reservations are not available for same-day requests right now.");
       }

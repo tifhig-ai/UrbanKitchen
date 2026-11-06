@@ -20,6 +20,25 @@ const RESERVATION_WINDOWS = {
     weekend: ["17:00", "20:30"],
   },
 };
+const HOLIDAY_CLOSURES = {
+  "2026-11-26": {
+    services: new Set(["brunch", "dinner"]),
+    message: "Urban Kitchen is closed on Thanksgiving.",
+  },
+  "2026-12-24": {
+    services: new Set(["dinner"]),
+    message: "Christmas Eve dinner is closed. Brunch is available from 8:00 AM-2:00 PM.",
+  },
+  "2026-12-25": {
+    services: new Set(["brunch", "dinner"]),
+    message: "Urban Kitchen is closed on Christmas Day.",
+  },
+};
+
+const getHolidayClosure = (service, date) => {
+  const closure = HOLIDAY_CLOSURES[date];
+  return closure?.services.has(service) ? closure : null;
+};
 
 const jsonResponse = (statusCode, body) => ({
   statusCode,
@@ -217,6 +236,10 @@ exports.handler = async (event) => {
 
   if (!name || !email || !phone || !parseDateParts(date) || !time || !service) {
     return jsonResponse(400, { error: "Please complete every required field." });
+  }
+  const holidayClosure = getHolidayClosure(service, date);
+  if (holidayClosure) {
+    return jsonResponse(400, { error: holidayClosure.message });
   }
   if (!isAllowedReservationTime(service, date, time)) {
     return jsonResponse(400, { error: "Please choose a reservation time within our current hours." });

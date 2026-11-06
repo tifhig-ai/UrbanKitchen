@@ -1404,6 +1404,52 @@ h1 em {
   padding-top: 0;
 }
 
+.holiday-hours-panel {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(32px, 7vw, 96px);
+  padding: clamp(54px, 8vw, 96px) var(--page-padding);
+  background: #173c31;
+  color: var(--paper);
+}
+
+.holiday-hours-panel h2 {
+  max-width: 520px;
+  margin: 0;
+  font-size: clamp(2.3rem, 5vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.holiday-hours-grid {
+  display: grid;
+  gap: 0;
+  align-content: center;
+}
+
+.holiday-hours-grid p {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.8fr) minmax(0, 1.2fr);
+  gap: 24px;
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(250, 247, 240, 0.2);
+}
+
+.holiday-hours-grid strong {
+  color: var(--gold);
+}
+
+.reservation-holiday-note {
+  margin-top: 18px;
+  padding: 15px 18px;
+  border-left: 3px solid var(--gold);
+  background: rgba(208, 170, 91, 0.1);
+  color: var(--black);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
 .special-page {
   background: var(--paper);
   overflow-x: hidden;
@@ -2389,6 +2435,15 @@ h1 em {
 }
 
 @media (max-width: 980px) {
+  .holiday-hours-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .holiday-hours-grid p {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
   .site-header.is-open {
     min-height: 100vh;
     min-height: 100dvh;
