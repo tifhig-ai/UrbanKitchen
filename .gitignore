@@ -27,3 +27,4 @@ print-ready/
 
 # Local Netlify folder
 .netlify
+node_modules/
