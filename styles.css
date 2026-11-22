@@ -1165,6 +1165,20 @@ h1 em {
   border-top: 1px solid rgba(250, 247, 240, 0.1);
 }
 
+.footer-staff {
+  margin-left: 0.75rem;
+  color: rgba(250, 247, 240, 0.38);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.footer-staff:hover,
+.footer-staff:focus-visible {
+  color: var(--gold);
+}
+
 .subpage {
   padding-top: 92px;
 }

@@ -1,2 +1,22 @@
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Staff pages stay out of search indexes. Patterns here are new paths only.
+[[headers]]
+  for = "/staff"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/staff/"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/staff/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "public, max-age=0, must-revalidate"
